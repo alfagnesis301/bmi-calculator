@@ -1,14 +1,33 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import Script from "next/script";
+
+const clientId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID;
+
+function useAdConsent() {
+  const [consented, setConsented] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem("cookie-consent") === "accepted") {
+      setConsented(true);
+    }
+    function onAccept() { setConsented(true); }
+    window.addEventListener("cookie-consent-accepted", onAccept);
+    return () => window.removeEventListener("cookie-consent-accepted", onAccept);
+  }, []);
+
+  return consented;
+}
+
 type AdProps = {
   slot?: string;
   className?: string;
   label?: string;
 };
 
-const clientId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID;
-
-export function AdPlaceholder({ className = "", label = "Advertisement" }: AdProps) {
+function DevPlaceholder({ className = "", label = "Advertisement" }: AdProps) {
   if (process.env.NODE_ENV !== "development") return null;
-
   return (
     <div
       className={`flex min-h-28 items-center justify-center rounded-xl border border-dashed border-slate-300 bg-slate-50 text-center text-xs font-semibold uppercase tracking-[0.18em] text-slate-400 ${className}`}
@@ -19,12 +38,25 @@ export function AdPlaceholder({ className = "", label = "Advertisement" }: AdPro
   );
 }
 
+export function AdPlaceholder({ className = "", label = "Advertisement" }: AdProps) {
+  return <DevPlaceholder className={className} label={label} />;
+}
+
 export function ResponsiveAdSlot({ slot, className = "", label = "Advertisement" }: AdProps) {
-  if (!clientId) return <AdPlaceholder className={className} label={label} />;
+  const consented = useAdConsent();
+
+  if (!clientId) return <DevPlaceholder className={className} label={label} />;
+  if (!consented) return null;
 
   return (
     <div className={`rounded-xl border border-slate-200 bg-white p-3 ${className}`}>
-      <p className="mb-2 text-center text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-muted">
+      <Script
+        id="adsense-init"
+        strategy="afterInteractive"
+        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${clientId}`}
+        crossOrigin="anonymous"
+      />
+      <p className="mb-2 text-center text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-slate-400">
         {label}
       </p>
       <ins

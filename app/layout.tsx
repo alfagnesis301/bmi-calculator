@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Script from "next/script";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { CookieBanner } from "@/components/CookieBanner";
 import { siteConfig } from "@/lib/seo";
 import "./globals.css";
 
@@ -38,23 +38,13 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const adsenseClientId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID;
-
   return (
     <html lang="en" className={inter.variable}>
       <body className="font-sans antialiased">
-        {adsenseClientId ? (
-          <Script
-            id="adsense-script"
-            async
-            strategy="afterInteractive"
-            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClientId}`}
-            crossOrigin="anonymous"
-          />
-        ) : null}
         <Header />
         {children}
         <Footer />
+        <CookieBanner />
       </body>
     </html>
   );
