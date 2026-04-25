@@ -55,6 +55,8 @@ export default async function ArticlePage({ params }: Props) {
             <time dateTime={article.publishDate}>{publishedLabel}</time>
             <span>·</span>
             <span>{article.readingMinutes} min read</span>
+            <span>·</span>
+            <span>By <a href="/about" className="text-teal-700 underline-offset-4 hover:underline">Ricardo Diaz</a></span>
           </div>
         </div>
       </section>
@@ -88,6 +90,28 @@ export default async function ArticlePage({ params }: Props) {
             ))}
           </div>
         </article>
+
+        <section className="rounded-3xl border border-slate-200 bg-white p-6 shadow-line sm:p-8">
+          <div className="flex items-start gap-4">
+            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-teal-100 text-xl font-black text-teal-700">
+              RD
+            </div>
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.12em] text-muted">Written by</p>
+              <p className="mt-0.5 text-lg font-black text-ink">Ricardo Diaz</p>
+              <p className="mt-1 text-sm leading-7 text-slate-600">
+                Ricardo is an independent health and fitness writer based in the United Kingdom.
+                He covers evidence-based topics in body composition, nutrition, and metabolic health,
+                drawing on peer-reviewed research and guidance from organisations including the WHO,
+                NHS, and CDC. All content is reviewed for accuracy before publication and updated
+                when public health guidance changes.
+              </p>
+              <a href="/about" className="mt-2 inline-block text-sm font-bold text-teal-700 underline-offset-4 hover:underline">
+                More about this site →
+              </a>
+            </div>
+          </div>
+        </section>
 
         {article.references.length > 0 && (
           <section className="rounded-3xl border border-slate-200 bg-white p-6 shadow-line sm:p-8">
