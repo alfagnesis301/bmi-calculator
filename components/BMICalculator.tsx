@@ -129,12 +129,30 @@ export function BMICalculator() {
   function handleSave() {
     if (!result) return;
 
-    try {
-      localStorage.setItem("last-bmi-result", JSON.stringify(result));
-      setStatus("Result saved locally on this device.");
-    } catch {
-      setStatus("Unable to save locally in this browser.");
-    }
+    const date = new Date(result.createdAt).toLocaleString("en-GB");
+    const lines = [
+      "BMI Result — BMI Checks (bmichecks.com)",
+      "─".repeat(40),
+      `Date:     ${date}`,
+      `BMI:      ${result.bmi.toFixed(1)}`,
+      `Category: ${result.category.label}`,
+      `Height:   ${result.heightLabel}`,
+      `Healthy weight range: ${result.healthyRange.min}–${result.healthyRange.max} ${result.healthyRange.unit}`,
+      "",
+      "This result is for general informational purposes only.",
+      "Always consult a qualified healthcare provider for health decisions.",
+    ].join("\n");
+
+    const blob = new Blob([lines], { type: "text/plain;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `bmi-result-${new Date(result.createdAt).toISOString().slice(0, 10)}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    setStatus("Result downloaded as a text file.");
   }
 
   const hasAnyError = Object.keys(errors).length > 0;
