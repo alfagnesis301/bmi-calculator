@@ -11,6 +11,7 @@ export function Footer() {
         </div>
         <nav className="flex flex-wrap gap-4 font-semibold" aria-label="Footer">
           <a className="hover:text-ink" href="/about">About</a>
+          <a className="hover:text-ink" href="/editorial-policy">Editorial Policy</a>
           <a className="hover:text-ink" href="/privacy-policy">Privacy</a>
           <a className="hover:text-ink" href="/terms">Terms</a>
           <a className="hover:text-ink" href="/contact">Contact</a>
