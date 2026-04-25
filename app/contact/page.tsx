@@ -11,19 +11,22 @@ export default function ContactPage() {
       <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-line sm:p-8">
         <h1 className="text-4xl font-black text-ink">Contact</h1>
         <p className="mt-5 leading-8 text-slate-700">
-          Use this page as the editable contact hub for [WEBSITE_NAME]. Before publishing, replace
-          the placeholders with the correct owner, country, and support details.
+          Have a question, a correction, or feedback about BMI Checks? Use the email below and
+          we will get back to you as soon as possible.
         </p>
 
         <div className="mt-8 rounded-2xl bg-mist p-5 leading-8 text-slate-700">
           <p>
-            <strong className="text-ink">Owner:</strong> [OWNER_NAME]
+            <strong className="text-ink">Owner:</strong> Ricardo Diaz
           </p>
           <p>
-            <strong className="text-ink">Email:</strong> [CONTACT_EMAIL]
+            <strong className="text-ink">Email:</strong>{" "}
+            <a href="mailto:contact@bmichecks.com" className="text-teal-700 underline-offset-4 hover:underline">
+              contact@bmichecks.com
+            </a>
           </p>
           <p>
-            <strong className="text-ink">Country:</strong> [COUNTRY]
+            <strong className="text-ink">Website:</strong> bmichecks.com
           </p>
         </div>
 

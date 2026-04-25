@@ -11,14 +11,14 @@ export default function TermsPage() {
       <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-line sm:p-8">
         <h1 className="text-4xl font-black text-ink">Terms of Use</h1>
         <p className="mt-4 text-sm font-semibold text-muted">
-          Last updated: [LAST_UPDATED_DATE]
+          Last updated: April 25, 2025
         </p>
 
         <div className="mt-8 space-y-7 leading-8 text-slate-700">
           <section>
             <h2 className="text-2xl font-black text-ink">Acceptance</h2>
             <p className="mt-3">
-              By using [WEBSITE_NAME], you agree to these Terms of Use. Replace placeholders with
+              By using BMI Checks, you agree to these Terms of Use. Replace placeholders with
               accurate business and jurisdiction details before publishing.
             </p>
           </section>
@@ -44,7 +44,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-2xl font-black text-ink">No warranties</h2>
             <p className="mt-3">
-              [WEBSITE_NAME] is provided as-is and as available. [OWNER_NAME] does not guarantee that
+              BMI Checks is provided as-is and as available. Ricardo Diaz does not guarantee that
               the site will be error-free, uninterrupted, or suitable for your specific needs.
             </p>
           </section>
@@ -52,14 +52,14 @@ export default function TermsPage() {
           <section>
             <h2 className="text-2xl font-black text-ink">Limitation of liability</h2>
             <p className="mt-3">
-              To the extent permitted by law in [COUNTRY], [OWNER_NAME] is not liable for losses
+              To the extent permitted by law in Spain, Ricardo Diaz is not liable for losses
               arising from use of the website or reliance on calculator results.
             </p>
           </section>
 
           <section>
             <h2 className="text-2xl font-black text-ink">Contact</h2>
-            <p className="mt-3">Questions about these terms can be sent to [CONTACT_EMAIL].</p>
+            <p className="mt-3">Questions about these terms can be sent to contact@bmichecks.com.</p>
           </section>
         </div>
       </div>

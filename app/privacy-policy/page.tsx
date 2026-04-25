@@ -11,16 +11,16 @@ export default function PrivacyPolicyPage() {
       <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-line sm:p-8">
         <h1 className="text-4xl font-black text-ink">Privacy Policy</h1>
         <p className="mt-4 text-sm font-semibold text-muted">
-          Last updated: [LAST_UPDATED_DATE]
+          Last updated: April 25, 2025
         </p>
 
         <div className="mt-8 space-y-7 leading-8 text-slate-700">
           <section>
             <h2 className="text-2xl font-black text-ink">Overview</h2>
             <p className="mt-3">
-              This Privacy Policy explains how [WEBSITE_NAME] handles information when you use this
+              This Privacy Policy explains how BMI Checks handles information when you use this
               website. Replace the placeholders in this document with accurate details before
-              publishing. This page does not create legal advice for [OWNER_NAME].
+              publishing. This page does not create legal advice for Ricardo Diaz.
             </p>
           </section>
 
@@ -29,7 +29,7 @@ export default function PrivacyPolicyPage() {
             <p className="mt-3">
               The BMI calculator can run in your browser without requiring an account. If you choose
               to save a result locally, the result is stored in your browser on your device using
-              localStorage. [WEBSITE_NAME] does not receive that locally saved result unless you add
+              localStorage. BMI Checks does not receive that locally saved result unless you add
               server-side features in the future.
             </p>
           </section>
@@ -37,7 +37,7 @@ export default function PrivacyPolicyPage() {
           <section>
             <h2 className="text-2xl font-black text-ink">Cookies</h2>
             <p className="mt-3">
-              [WEBSITE_NAME] may use cookies or similar technologies to operate the site, remember
+              BMI Checks may use cookies or similar technologies to operate the site, remember
               preferences, measure performance, or support advertising. You can control cookies
               through your browser settings.
             </p>
@@ -74,7 +74,7 @@ export default function PrivacyPolicyPage() {
           <section>
             <h2 className="text-2xl font-black text-ink">Your choices</h2>
             <p className="mt-3">
-              Depending on your location in [COUNTRY], you may have rights to access, delete, or
+              Depending on your location in Spain, you may have rights to access, delete, or
               correct certain personal information. Add the correct rights and process for your
               jurisdiction before launch.
             </p>
@@ -83,7 +83,7 @@ export default function PrivacyPolicyPage() {
           <section>
             <h2 className="text-2xl font-black text-ink">Contact</h2>
             <p className="mt-3">
-              For privacy questions, contact [OWNER_NAME] at [CONTACT_EMAIL].
+              For privacy questions, contact Ricardo Diaz at contact@bmichecks.com.
             </p>
           </section>
         </div>

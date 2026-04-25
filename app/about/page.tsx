@@ -12,7 +12,7 @@ export default function AboutPage() {
         <h1 className="text-4xl font-black text-ink">About BMI Calculator</h1>
         <div className="mt-8 space-y-6 leading-8 text-slate-700">
           <p>
-            [WEBSITE_NAME] is an independent utility website designed to make body mass index easier
+            BMI Checks is an independent utility website designed to make body mass index easier
             to calculate and understand. The tool supports metric and US units and presents the
             result with clear adult categories, healthy range context, and plain-language education.
           </p>
@@ -22,7 +22,7 @@ export default function AboutPage() {
             disease or replace professional advice.
           </p>
           <p>
-            This page should be edited before launch with accurate details about [OWNER_NAME], the
+            This page should be edited before launch with accurate details about Ricardo Diaz, the
             website mission, editorial process, update schedule, and contact route for corrections.
           </p>
         </div>
