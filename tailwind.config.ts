@@ -29,7 +29,7 @@ const config: Config = {
         line: "0 1px 0 rgba(23, 33, 43, 0.08)"
       },
       fontFamily: {
-        sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"]
+        sans: ["var(--font-inter)", "ui-sans-serif", "system-ui", "sans-serif"]
       }
     }
   },

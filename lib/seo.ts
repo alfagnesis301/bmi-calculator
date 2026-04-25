@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "BMI Calculator",
   url: "https://example.com",
-  title: "BMI Calculator - Calculate Your Body Mass Index Online",
+  title: "BMI Calculator – Calculate Your Body Mass Index Online",
   description:
     "Use this free BMI calculator to estimate your body mass index using metric or US units. Learn what your BMI means and understand healthy weight ranges.",
   contactEmail: "[CONTACT_EMAIL]"

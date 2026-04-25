@@ -16,7 +16,7 @@ import { BMIResult } from "./BMIResult";
 import { UnitTabs } from "./UnitTabs";
 
 const inputClass =
-  "mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-base font-semibold text-ink outline-none transition placeholder:text-slate-400 focus:border-teal-600 focus:ring-4 focus:ring-teal-100";
+  "mt-2 h-[3.25rem] w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-base font-bold text-ink outline-none transition placeholder:text-slate-400 focus:border-teal-600 focus:ring-4 focus:ring-teal-100";
 
 const errorClass = "mt-2 text-sm font-semibold text-rose-700";
 
@@ -140,30 +140,31 @@ export function BMICalculator() {
   const hasAnyError = Object.keys(errors).length > 0;
 
   return (
-    <div className="grid gap-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)]">
+    <div className="grid gap-6 xl:grid-cols-[minmax(560px,0.98fr)_minmax(420px,0.72fr)]">
       <section
         id="calculator"
-        className="rounded-3xl border border-slate-200 bg-white p-5 shadow-soft sm:p-7"
+        className="relative overflow-hidden rounded-[2rem] border border-white bg-white p-5 shadow-soft ring-1 ring-slate-200/70 sm:p-7 lg:p-8"
         aria-labelledby="calculator-title"
       >
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+        <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-teal-100/70 blur-3xl" />
+        <div className="relative flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div>
             <p className="text-sm font-bold uppercase tracking-[0.12em] text-teal-700">
               Quick estimate
             </p>
-            <h2 id="calculator-title" className="mt-2 text-2xl font-black text-ink">
+            <h2 id="calculator-title" className="mt-2 text-3xl font-black leading-tight text-ink">
               Calculate your BMI
             </h2>
           </div>
-          <span className="rounded-full bg-mist px-3 py-1.5 text-xs font-bold text-muted">
+          <span className="w-fit rounded-full border border-teal-100 bg-teal-50 px-3 py-1.5 text-xs font-bold text-teal-800">
             No account needed
           </span>
         </div>
 
-        <form className="mt-6 space-y-5" onSubmit={handleSubmit} noValidate>
+        <form className="relative mt-6 space-y-6" onSubmit={handleSubmit} noValidate>
           <UnitTabs activeUnit={unit} onChange={handleUnitChange} />
 
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid gap-5 md:grid-cols-[minmax(160px,0.55fr)_minmax(280px,1fr)]">
             <Field label="Age" name="age" error={errors.age}>
               <input
                 id="age"
@@ -182,14 +183,14 @@ export function BMICalculator() {
 
             <fieldset>
               <legend className="text-sm font-bold text-ink">Gender</legend>
-              <div className="mt-2 grid grid-cols-3 gap-2">
+              <div className="mt-2 grid min-w-0 grid-cols-3 gap-2 rounded-2xl bg-slate-100 p-1.5">
                 {(["optional", "male", "female"] as Gender[]).map((item) => (
                   <label
                     key={item}
-                    className={`cursor-pointer rounded-xl border px-3 py-3 text-center text-sm font-bold capitalize transition ${
+                    className={`flex h-11 min-w-0 cursor-pointer items-center justify-center rounded-xl border px-2 text-center text-[0.82rem] font-black capitalize leading-none transition ${
                       gender === item
-                        ? "border-teal-600 bg-teal-50 text-teal-950"
-                        : "border-slate-300 bg-white text-muted hover:border-slate-400"
+                        ? "border-teal-600 bg-white text-teal-950 shadow-line"
+                        : "border-transparent text-muted hover:bg-white/70 hover:text-ink"
                     }`}
                   >
                     <input
@@ -208,7 +209,7 @@ export function BMICalculator() {
           </div>
 
           {unit === "metric" ? (
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className="grid gap-5 sm:grid-cols-2">
               <Field label="Height" name="heightCm" suffix="cm" error={errors.heightCm}>
                 <input
                   id="heightCm"
@@ -241,7 +242,7 @@ export function BMICalculator() {
               </Field>
             </div>
           ) : (
-            <div className="grid gap-4 sm:grid-cols-3">
+            <div className="grid gap-5 sm:grid-cols-3">
               <Field label="Feet" name="feet" error={errors.feet}>
                 <input
                   id="feet"
@@ -300,17 +301,17 @@ export function BMICalculator() {
             ) : null}
           </div>
 
-          <div className="flex flex-col gap-3 sm:flex-row">
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             <button
               type="submit"
-              className="rounded-xl bg-teal-700 px-5 py-3.5 text-base font-black text-white shadow-line transition hover:bg-teal-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700"
+              className="min-h-[3.25rem] rounded-2xl bg-teal-700 px-5 py-3.5 text-base font-black text-white shadow-line transition hover:bg-teal-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700"
             >
               Calculate BMI
             </button>
             <button
               type="button"
               onClick={handleReset}
-              className="rounded-xl border border-slate-300 bg-white px-5 py-3.5 text-base font-black text-ink transition hover:bg-slate-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700"
+              className="min-h-[3.25rem] rounded-2xl border border-slate-300 bg-white px-5 py-3.5 text-base font-black text-ink transition hover:bg-slate-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700"
             >
               Reset
             </button>
@@ -318,7 +319,7 @@ export function BMICalculator() {
               type="button"
               onClick={handleCopy}
               disabled={!result}
-              className="rounded-xl border border-slate-300 bg-white px-5 py-3.5 text-base font-black text-ink transition hover:bg-slate-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700 disabled:cursor-not-allowed disabled:opacity-50"
+              className="min-h-[3.25rem] rounded-2xl border border-slate-300 bg-white px-5 py-3.5 text-base font-black text-ink transition hover:bg-slate-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700 disabled:cursor-not-allowed disabled:opacity-45"
             >
               Copy Result
             </button>
@@ -326,7 +327,7 @@ export function BMICalculator() {
               type="button"
               onClick={handleSave}
               disabled={!result}
-              className="rounded-xl border border-slate-300 bg-white px-5 py-3.5 text-base font-black text-ink transition hover:bg-slate-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700 disabled:cursor-not-allowed disabled:opacity-50"
+              className="min-h-[3.25rem] rounded-2xl border border-slate-300 bg-white px-5 py-3.5 text-base font-black text-ink transition hover:bg-slate-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700 disabled:cursor-not-allowed disabled:opacity-45"
             >
               Save Locally
             </button>
@@ -353,7 +354,7 @@ type FieldProps = {
 
 function Field({ label, name, suffix, error, children }: FieldProps) {
   return (
-    <div>
+    <div className="min-w-0">
       <label htmlFor={name} className="flex items-center justify-between text-sm font-bold text-ink">
         <span>{label}</span>
         {suffix ? <span className="text-xs uppercase tracking-[0.08em] text-muted">{suffix}</span> : null}

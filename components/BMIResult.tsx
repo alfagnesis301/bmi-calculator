@@ -9,14 +9,29 @@ type BMIResultProps = {
 export function BMIResult({ result }: BMIResultProps) {
   if (!result) {
     return (
-      <section className="rounded-2xl border border-dashed border-slate-300 bg-white/80 p-6 text-muted">
-        <h2 className="text-lg font-bold text-ink">Your BMI result will appear here</h2>
-        <p className="mt-2 text-sm leading-6">
-          Enter your measurements and select Calculate BMI to see your BMI number, category, healthy
-          BMI range, and an approximate healthy weight range for your height.
-        </p>
-        <div className="mt-6">
+      <section className="relative overflow-hidden rounded-[2rem] border border-white bg-ink p-6 text-white shadow-soft ring-1 ring-slate-200/70 sm:p-7 lg:p-8">
+        <div className="absolute -right-16 -top-16 h-44 w-44 rounded-full bg-teal-400/25 blur-3xl" />
+        <div className="absolute -bottom-20 -left-20 h-48 w-48 rounded-full bg-coral/25 blur-3xl" />
+        <div className="relative">
+          <p className="text-sm font-black uppercase tracking-[0.12em] text-teal-200">Result preview</p>
+          <h2 className="mt-2 text-2xl font-black leading-tight">Your BMI result will appear here</h2>
+          <p className="mt-3 text-sm leading-6 text-slate-200">
+            Enter your measurements and select Calculate BMI to see your BMI number, adult category,
+            healthy BMI range, and estimated healthy weight range.
+          </p>
+        </div>
+        <div className="relative mt-7 rounded-2xl bg-white p-4 text-muted">
           <BMIChart />
+        </div>
+        <div className="relative mt-5 grid grid-cols-2 gap-3 text-sm">
+          <div className="rounded-2xl bg-white/10 p-4">
+            <strong className="block text-lg text-white">18.5 - 24.9</strong>
+            <span className="text-slate-300">Healthy BMI range</span>
+          </div>
+          <div className="rounded-2xl bg-white/10 p-4">
+            <strong className="block text-lg text-white">Private</strong>
+            <span className="text-slate-300">Runs in browser</span>
+          </div>
         </div>
       </section>
     );
@@ -24,7 +39,7 @@ export function BMIResult({ result }: BMIResultProps) {
 
   return (
     <section
-      className="animate-result rounded-2xl border border-slate-200 bg-white p-6 shadow-soft"
+      className="animate-result rounded-[2rem] border border-white bg-white p-6 shadow-soft ring-1 ring-slate-200/70 sm:p-7 lg:p-8"
       aria-live="polite"
     >
       <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">

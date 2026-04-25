@@ -66,35 +66,66 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <section className="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,#d2f7f1,transparent_34%),linear-gradient(135deg,#ffffff_0%,#f4f8f8_52%,#f9efe9_100%)]">
-        <div className="mx-auto max-w-6xl px-4 pb-10 pt-10 sm:px-6 sm:pb-14 sm:pt-14 lg:px-8">
-          <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-center">
+      <section className="relative overflow-hidden bg-[radial-gradient(circle_at_12%_18%,#c8f5ee_0,transparent_30%),radial-gradient(circle_at_88%_8%,#ffe1d4_0,transparent_26%),linear-gradient(135deg,#f8fffd_0%,#f4f8f8_50%,#fff7f1_100%)]">
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-teal-300 to-transparent" />
+        <div className="mx-auto max-w-7xl px-4 pb-12 pt-10 sm:px-6 sm:pb-16 sm:pt-14 lg:px-8">
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,0.95fr)_420px] lg:items-end">
             <div>
-              <p className="text-sm font-bold uppercase tracking-[0.14em] text-teal-700">
+              <p className="inline-flex rounded-full border border-teal-200 bg-white/80 px-4 py-2 text-xs font-black uppercase tracking-[0.16em] text-teal-700 shadow-line">
                 Free online health tool
               </p>
-              <h1 className="mt-4 text-4xl font-black leading-tight text-ink sm:text-5xl">
-                BMI Calculator
+              <h1 className="mt-5 max-w-3xl text-4xl font-black leading-tight text-ink sm:text-6xl">
+                Body Mass Index Calculator
               </h1>
-              <p className="mt-5 max-w-xl text-lg leading-8 text-slate-700">
-                Estimate your body mass index in seconds with metric or US units, then understand
-                what the number can and cannot tell you about weight range and health context.
+              <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-700 sm:text-xl">
+                Calculate your BMI with metric or US units, see your adult BMI category, and get a
+                clear healthy-weight estimate without creating an account.
               </p>
-              <div className="mt-7 grid max-w-xl grid-cols-3 gap-3 text-sm">
-                <div className="rounded-2xl border border-white bg-white/80 p-4 shadow-line">
-                  <strong className="block text-xl text-ink">2 units</strong>
-                  <span className="text-muted">Metric and US</span>
+              <div className="mt-8 grid max-w-2xl gap-3 text-sm sm:grid-cols-3">
+                <div className="rounded-2xl border border-white bg-white/85 p-4 shadow-line backdrop-blur">
+                  <strong className="block text-2xl text-ink">2 systems</strong>
+                  <span className="font-semibold text-muted">Metric &amp; US units</span>
                 </div>
-                <div className="rounded-2xl border border-white bg-white/80 p-4 shadow-line">
-                  <strong className="block text-xl text-ink">1 decimal</strong>
-                  <span className="text-muted">Clear result</span>
+                <div className="rounded-2xl border border-white bg-white/85 p-4 shadow-line backdrop-blur">
+                  <strong className="block text-2xl text-ink">1 decimal</strong>
+                  <span className="font-semibold text-muted">Precise BMI result</span>
                 </div>
-                <div className="rounded-2xl border border-white bg-white/80 p-4 shadow-line">
-                  <strong className="block text-xl text-ink">Private</strong>
-                  <span className="text-muted">Local save only</span>
+                <div className="rounded-2xl border border-white bg-white/85 p-4 shadow-line backdrop-blur">
+                  <strong className="block text-2xl text-ink">Private</strong>
+                  <span className="font-semibold text-muted">Optional local save</span>
                 </div>
               </div>
             </div>
+
+            <div className="hidden rounded-3xl border border-white bg-white/75 p-5 shadow-soft backdrop-blur lg:block">
+              <div className="flex items-center justify-between">
+                <p className="text-sm font-black uppercase tracking-[0.12em] text-teal-700">
+                  Adult ranges
+                </p>
+                <span className="rounded-full bg-teal-50 px-3 py-1 text-xs font-bold text-teal-800">
+                  Screening only
+                </span>
+              </div>
+              <div className="mt-5 space-y-3">
+                {[
+                  ["Underweight", "Below 18.5", "bg-sky-500"],
+                  ["Normal", "18.5 - 24.9", "bg-teal-500"],
+                  ["Overweight", "25 - 29.9", "bg-amber-500"],
+                  ["Obesity", "30+", "bg-rose-500"]
+                ].map(([label, range, color]) => (
+                  <div key={label} className="flex items-center justify-between rounded-2xl bg-white p-3 shadow-line">
+                    <span className="flex items-center gap-3 font-bold text-ink">
+                      <span className={`h-3 w-3 rounded-full ${color}`} aria-hidden="true" />
+                      {label}
+                    </span>
+                    <span className="text-sm font-bold text-muted">{range}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-10">
             <BMICalculator />
           </div>
         </div>
