@@ -10,7 +10,7 @@ export default function PrivacyPolicyPage() {
     <main className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
       <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-line sm:p-10">
         <h1 className="text-4xl font-black text-ink">Privacy Policy</h1>
-        <p className="mt-2 text-sm font-semibold text-muted">Last updated: April 25, 2025</p>
+        <p className="mt-2 text-sm font-semibold text-muted">Last reviewed: April 25, 2026</p>
 
         <div className="mt-8 space-y-8 leading-8 text-slate-700">
 

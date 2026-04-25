@@ -10,7 +10,7 @@ export default function AboutPage() {
     <main className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
       <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-line sm:p-10">
         <h1 className="text-4xl font-black text-ink">About BMI Checks</h1>
-        <p className="mt-2 text-sm font-semibold text-muted">Last updated: April 25, 2025</p>
+        <p className="mt-2 text-sm font-semibold text-muted">Last reviewed: April 25, 2026</p>
 
         <div className="mt-8 space-y-8 leading-8 text-slate-700">
 
@@ -67,7 +67,7 @@ export default function AboutPage() {
               The BMI calculator tool is reviewed and tested regularly to ensure calculations remain
               accurate. Educational content is reviewed at least once per year or whenever significant
               changes to public health guidance are published by major health authorities.
-              The last full content review was completed in April 2025.
+              The last full content review was completed in April 2026.
             </p>
           </section>
 
