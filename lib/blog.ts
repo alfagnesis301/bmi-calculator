@@ -22,7 +22,7 @@ export const articles: Article[] = [
     title: "What Is a Healthy BMI? A Complete Guide",
     description:
       "Learn what a healthy BMI means, how it is calculated, what the WHO categories indicate, and when to speak to a doctor about your weight.",
-    publishDate: "2025-01-15",
+    publishDate: "2025-11-10",
     readingMinutes: 5,
     tags: ["BMI", "Healthy Weight"],
     sections: [
@@ -94,7 +94,7 @@ export const articles: Article[] = [
     title: "BMI vs Body Fat Percentage: Key Differences Explained",
     description:
       "BMI and body fat percentage both assess weight-related health risk but measure different things. Understand when each metric is useful and which to prioritise.",
-    publishDate: "2025-01-28",
+    publishDate: "2025-11-24",
     readingMinutes: 5,
     tags: ["BMI", "Body Fat"],
     sections: [
@@ -164,7 +164,7 @@ export const articles: Article[] = [
     title: "BMI for Women: What the Numbers Really Mean",
     description:
       "The BMI formula is the same for men and women, but health implications differ. Discover how hormones, life stage, and fat distribution affect what your BMI means.",
-    publishDate: "2025-02-05",
+    publishDate: "2025-12-03",
     readingMinutes: 5,
     tags: ["BMI", "Women's Health"],
     sections: [
@@ -234,7 +234,7 @@ export const articles: Article[] = [
     title: "BMI for Men: Understanding Your Weight Category",
     description:
       "Men tend to store fat abdominally, which raises cardiovascular risk. Learn how BMI applies to men, the muscle mass caveat, and how to build a fuller health picture.",
-    publishDate: "2025-02-12",
+    publishDate: "2025-12-10",
     readingMinutes: 5,
     tags: ["BMI", "Men's Health"],
     sections: [
@@ -303,7 +303,7 @@ export const articles: Article[] = [
     title: "How BMI Changes with Age: What You Need to Know",
     description:
       "Standard BMI thresholds were designed for adults aged 18–65. Find out how age affects body composition, what BMI means at different life stages, and why children need different charts.",
-    publishDate: "2025-02-20",
+    publishDate: "2025-12-18",
     readingMinutes: 5,
     tags: ["BMI", "Healthy Weight"],
     sections: [
@@ -372,7 +372,7 @@ export const articles: Article[] = [
     title: "How to Lower Your BMI: Evidence-Based Strategies",
     description:
       "Reduce your BMI safely with evidence-based strategies including calorie deficits, resistance training, better sleep, and smart dietary choices — without crash dieting.",
-    publishDate: "2025-02-28",
+    publishDate: "2026-01-08",
     readingMinutes: 6,
     tags: ["BMI", "Weight Loss", "Nutrition"],
     sections: [
@@ -448,7 +448,7 @@ export const articles: Article[] = [
     title: "Is BMI Accurate? Limitations and Alternatives",
     description:
       "BMI is a useful population tool but misclassifies many individuals. Explore its limitations — muscle mass, ethnicity, age — and the best alternatives to use alongside it.",
-    publishDate: "2025-03-07",
+    publishDate: "2026-01-15",
     readingMinutes: 5,
     tags: ["BMI", "Body Fat"],
     sections: [
@@ -525,7 +525,7 @@ export const articles: Article[] = [
     title: "BMI and Heart Disease: What the Evidence Shows",
     description:
       "Excess weight strains the heart and raises cardiovascular disease risk. Explore the evidence linking BMI to heart disease, why abdominal fat is particularly dangerous, and what even modest weight loss can do.",
-    publishDate: "2025-03-14",
+    publishDate: "2026-01-22",
     readingMinutes: 5,
     tags: ["BMI", "Heart Health"],
     sections: [
@@ -594,7 +594,7 @@ export const articles: Article[] = [
     title: "BMI and Type 2 Diabetes: Understanding the Link",
     description:
       "Obesity is the strongest modifiable risk factor for type 2 diabetes. Learn how excess fat causes insulin resistance, at what BMI risk rises sharply, and how weight loss can prevent or delay diabetes.",
-    publishDate: "2025-03-21",
+    publishDate: "2026-02-05",
     readingMinutes: 6,
     tags: ["BMI", "Healthy Weight"],
     sections: [
@@ -663,7 +663,7 @@ export const articles: Article[] = [
     title: "How Fast Should You Lose Weight? What Science Recommends",
     description:
       "Losing weight too fast leads to muscle loss and rapid regain. Learn the evidence-based rate of weight loss recommended by the NHS and WHO, and how to apply it in practice.",
-    publishDate: "2025-03-28",
+    publishDate: "2026-02-19",
     readingMinutes: 5,
     tags: ["Weight Loss", "Nutrition"],
     sections: [
@@ -733,7 +733,7 @@ export const articles: Article[] = [
     title: "Understanding Your BMR: Why Resting Metabolism Matters",
     description:
       "Your Basal Metabolic Rate is the foundation of every calorie calculation. Learn what determines your BMR, how to estimate it, and why it matters for sustainable weight management.",
-    publishDate: "2025-04-07",
+    publishDate: "2026-03-12",
     readingMinutes: 6,
     tags: ["Metabolism", "Weight Loss"],
     sections: [
@@ -806,7 +806,7 @@ export const articles: Article[] = [
       "Waist Circumference and Health: Why It Matters Beyond Weight",
     description:
       "Waist circumference reflects dangerous visceral fat more accurately than BMI alone. Learn how to measure your waist correctly and what the WHO risk thresholds mean for your health.",
-    publishDate: "2025-04-18",
+    publishDate: "2026-04-10",
     readingMinutes: 5,
     tags: ["Healthy Weight", "Heart Health"],
     sections: [
