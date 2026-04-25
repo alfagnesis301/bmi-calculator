@@ -1,0 +1,32 @@
+{
+  "name": "bmi-calculator-site",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "next": "^16.2.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.16",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.39.1",
+    "eslint-config-next": "^16.2.4",
+    "language-subtag-registry": "^0.3.23",
+    "postcss": "8.5.10",
+    "tailwindcss": "^3.4.17",
+    "tsconfig-paths": "^3.15.0",
+    "typescript": "^5.7.3"
+  },
+  "overrides": {
+    "postcss": "8.5.10"
+  }
+}
