@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
-import { CookieBanner } from "@/components/CookieBanner";
 import { siteConfig } from "@/lib/seo";
 import "./globals.css";
 
@@ -40,11 +40,19 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={inter.variable}>
+      <head>
+        <Script
+          id="Cookiebot"
+          src="https://consent.cookiebot.com/uc.js"
+          data-cbid="b5a62140-a555-4d74-a01e-7d24f1b10f3a"
+          data-blockingmode="auto"
+          strategy="beforeInteractive"
+        />
+      </head>
       <body className="font-sans antialiased">
         <Header />
         {children}
         <Footer />
-        <CookieBanner />
       </body>
     </html>
   );

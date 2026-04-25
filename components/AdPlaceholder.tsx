@@ -9,12 +9,18 @@ function useAdConsent() {
   const [consented, setConsented] = useState(false);
 
   useEffect(() => {
-    if (localStorage.getItem("cookie-consent") === "accepted") {
+    // Check if Cookiebot already registered marketing consent (returning visitor)
+    if ((window as { Cookiebot?: { consent?: { marketing?: boolean } } }).Cookiebot?.consent?.marketing) {
       setConsented(true);
+      return;
     }
-    function onAccept() { setConsented(true); }
-    window.addEventListener("cookie-consent-accepted", onAccept);
-    return () => window.removeEventListener("cookie-consent-accepted", onAccept);
+    function onAccept() {
+      if ((window as { Cookiebot?: { consent?: { marketing?: boolean } } }).Cookiebot?.consent?.marketing) {
+        setConsented(true);
+      }
+    }
+    window.addEventListener("CookiebotOnAccept", onAccept);
+    return () => window.removeEventListener("CookiebotOnAccept", onAccept);
   }, []);
 
   return consented;
