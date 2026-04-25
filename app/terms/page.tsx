@@ -52,7 +52,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-2xl font-black text-ink">Limitation of liability</h2>
             <p className="mt-3">
-              To the extent permitted by law in Spain, Ricardo Diaz is not liable for losses
+              To the extent permitted by law in United Kingdom, Ricardo Diaz is not liable for losses
               arising from use of the website or reliance on calculator results.
             </p>
           </section>

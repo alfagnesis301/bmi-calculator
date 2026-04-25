@@ -74,7 +74,7 @@ export default function PrivacyPolicyPage() {
           <section>
             <h2 className="text-2xl font-black text-ink">Your choices</h2>
             <p className="mt-3">
-              Depending on your location in Spain, you may have rights to access, delete, or
+              Depending on your location in United Kingdom, you may have rights to access, delete, or
               correct certain personal information. Add the correct rights and process for your
               jurisdiction before launch.
             </p>
