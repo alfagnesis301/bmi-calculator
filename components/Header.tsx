@@ -8,9 +8,9 @@ export function Header() {
           BMI Calculator
         </Link>
         <nav className="hidden items-center gap-6 text-sm font-semibold text-muted sm:flex" aria-label="Primary">
-          <a className="hover:text-ink" href="#calculator">Calculator</a>
-          <a className="hover:text-ink" href="#learn">Learn</a>
-          <a className="hover:text-ink" href="#faq">FAQ</a>
+          <a className="hover:text-ink" href="/#calculator">Calculator</a>
+          <a className="hover:text-ink" href="/#learn">Learn</a>
+          <a className="hover:text-ink" href="/#faq">FAQ</a>
           <a className="hover:text-ink" href="/contact">Contact</a>
         </nav>
       </div>
