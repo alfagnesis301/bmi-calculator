@@ -7,7 +7,7 @@ type BMIChartProps = {
 const ranges = [
   { label: "Underweight", color: "bg-sky-500", width: "21.7%" },
   { label: "Normal", color: "bg-teal-500", width: "21.3%" },
-  { label: "Overweight", color: "bg-amber-500", width: "16.7%" },
+  { label: "Overweight", color: "bg-orange-500", width: "16.7%" },
   { label: "Obesity", color: "bg-rose-500", width: "40.3%" }
 ];
 

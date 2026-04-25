@@ -31,7 +31,7 @@ const categories: BMICategory[] = [
     range: "25.0 - 29.9",
     description:
       "Your BMI is above the adult healthy-weight range. BMI does not diagnose health, but it can be a prompt to review habits or speak with a healthcare professional.",
-    accentClass: "border-amber-300 bg-amber-50 text-amber-950"
+    accentClass: "border-orange-300 bg-orange-50 text-orange-950"
   },
   {
     key: "obesity",
