@@ -11,6 +11,7 @@ export function Header() {
           <a className="hover:text-ink" href="/#calculator">Calculator</a>
           <a className="hover:text-ink" href="/#learn">Learn</a>
           <a className="hover:text-ink" href="/#faq">FAQ</a>
+          <a className="hover:text-ink" href="/health-calculators">Tools</a>
           <a className="hover:text-ink" href="/contact">Contact</a>
         </nav>
       </div>
