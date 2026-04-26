@@ -1,30 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Script from "next/script";
 
 const clientId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID;
-
-function useAdConsent() {
-  const [consented, setConsented] = useState(false);
-
-  useEffect(() => {
-    // Check if Cookiebot already registered marketing consent (returning visitor)
-    if ((window as { Cookiebot?: { consent?: { marketing?: boolean } } }).Cookiebot?.consent?.marketing) {
-      setConsented(true);
-      return;
-    }
-    function onAccept() {
-      if ((window as { Cookiebot?: { consent?: { marketing?: boolean } } }).Cookiebot?.consent?.marketing) {
-        setConsented(true);
-      }
-    }
-    window.addEventListener("CookiebotOnAccept", onAccept);
-    return () => window.removeEventListener("CookiebotOnAccept", onAccept);
-  }, []);
-
-  return consented;
-}
 
 type AdProps = {
   slot?: string;
@@ -49,10 +27,7 @@ export function AdPlaceholder({ className = "", label = "Advertisement" }: AdPro
 }
 
 export function ResponsiveAdSlot({ slot, className = "", label = "Advertisement" }: AdProps) {
-  const consented = useAdConsent();
-
   if (!clientId) return <DevPlaceholder className={className} label={label} />;
-  if (!consented) return null;
 
   return (
     <div className={`rounded-xl border border-slate-200 bg-white p-3 ${className}`}>
