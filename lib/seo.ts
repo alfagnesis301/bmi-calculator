@@ -4,7 +4,8 @@ export const siteConfig = {
   title: "BMI Calculator – Calculate Your Body Mass Index Online",
   description:
     "Use this free BMI calculator to estimate your body mass index using metric or US units. Learn what your BMI means and understand healthy weight ranges.",
-  contactEmail: "[CONTACT_EMAIL]"
+  contactEmail: "[CONTACT_EMAIL]",
+  adsenseClientId: "ca-pub-7051995204409435"
 };
 
 export const faqItems = [

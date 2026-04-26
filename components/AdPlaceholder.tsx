@@ -1,8 +1,8 @@
 "use client";
 
-import Script from "next/script";
+import { siteConfig } from "@/lib/seo";
 
-const clientId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID;
+const clientId = siteConfig.adsenseClientId;
 
 type AdProps = {
   slot?: string;
@@ -31,12 +31,6 @@ export function ResponsiveAdSlot({ slot, className = "", label = "Advertisement"
 
   return (
     <div className={`rounded-xl border border-slate-200 bg-white p-3 ${className}`}>
-      <Script
-        id="adsense-init"
-        strategy="afterInteractive"
-        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${clientId}`}
-        crossOrigin="anonymous"
-      />
       <p className="mb-2 text-center text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-slate-400">
         {label}
       </p>
