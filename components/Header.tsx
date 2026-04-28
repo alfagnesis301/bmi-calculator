@@ -8,12 +8,12 @@ export function Header() {
           BMI Calculator
         </Link>
         <nav className="hidden items-center gap-6 text-sm font-semibold text-muted sm:flex" aria-label="Primary">
-          <a className="hover:text-ink" href="/#calculator">Calculator</a>
-          <a className="hover:text-ink" href="/#learn">Learn</a>
-          <a className="hover:text-ink" href="/#faq">FAQ</a>
-          <a className="hover:text-ink" href="/health-calculators">Tools</a>
-          <a className="hover:text-ink" href="/blog">Blog</a>
-          <a className="hover:text-ink" href="/contact">Contact</a>
+          <Link className="hover:text-ink" href="/#calculator">Calculator</Link>
+          <Link className="hover:text-ink" href="/#learn">Learn</Link>
+          <Link className="hover:text-ink" href="/#faq">FAQ</Link>
+          <Link className="hover:text-ink" href="/health-calculators">Tools</Link>
+          <Link className="hover:text-ink" href="/blog">Blog</Link>
+          <Link className="hover:text-ink" href="/contact">Contact</Link>
         </nav>
       </div>
     </header>

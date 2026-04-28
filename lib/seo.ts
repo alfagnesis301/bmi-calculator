@@ -1,9 +1,9 @@
 export const siteConfig = {
   name: "BMI Calculator",
   url: "https://bmichecks.com",
-  title: "BMI Calculator – Calculate Your Body Mass Index Online",
+  title: "BMI Calculator - Check Your BMI and Healthy Weight Range",
   description:
-    "Use this free BMI calculator to estimate your body mass index using metric or US units. Learn what your BMI means and understand healthy weight ranges.",
+    "Use this free BMI calculator to check your body mass index, see adult BMI categories, and understand the healthy BMI range of 18.5 to 24.9.",
   contactEmail: "[CONTACT_EMAIL]",
   adsenseClientId: "ca-pub-7051995204409435"
 };

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { BMICalculator } from "@/components/BMICalculator";
 import { FAQ } from "@/components/FAQ";
 import { InContentAd, ResponsiveAdSlot, SidebarAd } from "@/components/AdPlaceholder";
@@ -137,6 +138,33 @@ export default function HomePage() {
 
       <div className="mx-auto grid max-w-6xl gap-8 px-4 pb-14 sm:px-6 lg:grid-cols-[minmax(0,1fr)_300px] lg:px-8">
         <article id="learn" className="space-y-10">
+          <section className="rounded-3xl border border-teal-200 bg-white p-6 shadow-line sm:p-8">
+            <p className="text-sm font-bold uppercase tracking-[0.12em] text-teal-700">
+              Adult BMI guidance
+            </p>
+            <h2 className="mt-2 text-3xl font-black text-ink">
+              Healthy BMI Range for Adults: 18.5 to 24.9
+            </h2>
+            <p className="mt-4 leading-8 text-slate-700">
+              For most adults, a BMI from 18.5 to 24.9 is commonly considered the healthy BMI
+              range. A BMI below 18.5 is usually classified as underweight, 25 to 29.9 as
+              overweight, and 30 or higher as obesity. These adult BMI categories are screening
+              ranges used by public health organizations; they are not a personal diagnosis.
+            </p>
+            <p className="mt-4 leading-8 text-slate-700">
+              Use your result as a quick way to understand where your weight sits for your height.
+              If your BMI is outside the healthy range, or if your weight has changed unexpectedly,
+              a qualified healthcare provider can interpret the number alongside waist measurement,
+              body composition, medical history, and other health markers.
+            </p>
+            <Link
+              href="/healthy-bmi-range"
+              className="mt-5 inline-flex rounded-2xl bg-teal-700 px-5 py-3 text-sm font-black text-white transition hover:bg-teal-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700"
+            >
+              Learn more about healthy BMI range
+            </Link>
+          </section>
+
           <section className="rounded-3xl border border-slate-200 bg-white p-6 shadow-line sm:p-8">
             <h2 className="text-3xl font-black text-ink">What is BMI?</h2>
             <p className="mt-4 leading-8 text-slate-700">

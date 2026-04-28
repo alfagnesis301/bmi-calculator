@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getArticle, getArticles } from "@/lib/blog";
 
@@ -155,12 +156,12 @@ export default async function ArticlePage({ params }: Props) {
               </a>
             ))}
           </div>
-          <a
+          <Link
             href="/blog"
             className="mt-4 inline-block text-sm font-bold text-teal-700 underline-offset-4 hover:underline"
           >
             View all articles →
-          </a>
+          </Link>
         </nav>
 
         <nav className="rounded-2xl border border-slate-200 bg-white p-6 shadow-line">
