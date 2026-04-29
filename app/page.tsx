@@ -206,6 +206,12 @@ export default function HomePage() {
                 The formulas produce the same type of score. The only difference is the conversion
                 factor needed when using pounds and inches instead of kilograms and meters.
               </p>
+              <Link
+                href="/how-to-find-your-bmi-score"
+                className="mt-4 inline-flex text-sm font-black text-teal-700 underline-offset-4 hover:underline"
+              >
+                How to find your BMI score step by step
+              </Link>
             </div>
 
             <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-line sm:p-8">

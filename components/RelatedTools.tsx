@@ -1,4 +1,6 @@
 const tools = [
+  { name: "How to Find Your BMI Score", href: "/how-to-find-your-bmi-score" },
+  { name: "Healthy BMI Range", href: "/healthy-bmi-range" },
   { name: "Ideal Weight Calculator", href: "/ideal-weight-calculator" },
   { name: "BMR Calculator", href: "/bmr-calculator" },
   { name: "Calorie Calculator", href: "/calorie-calculator" },
