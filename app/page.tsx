@@ -163,6 +163,14 @@ export default function HomePage() {
             >
               Learn more about healthy BMI range
             </Link>
+            <div className="mt-4 flex flex-wrap gap-3 text-sm font-bold">
+              <Link className="text-teal-700 underline-offset-4 hover:underline" href="/bmi-categories">
+                See BMI categories
+              </Link>
+              <Link className="text-teal-700 underline-offset-4 hover:underline" href="/bmi-chart">
+                View BMI chart
+              </Link>
+            </div>
           </section>
 
           <section className="rounded-3xl border border-slate-200 bg-white p-6 shadow-line sm:p-8">
@@ -212,6 +220,12 @@ export default function HomePage() {
               >
                 How to find your BMI score step by step
               </Link>
+              <Link
+                href="/bmi-formula"
+                className="mt-3 inline-flex text-sm font-black text-teal-700 underline-offset-4 hover:underline"
+              >
+                Learn the BMI formula
+              </Link>
             </div>
 
             <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-line sm:p-8">
@@ -250,6 +264,12 @@ export default function HomePage() {
                 same BMI can mean different things for two people with different bodies and health
                 histories.
               </p>
+              <Link
+                href="/bmi-categories"
+                className="mt-4 inline-flex text-sm font-black text-teal-700 underline-offset-4 hover:underline"
+              >
+                Read the full BMI categories guide
+              </Link>
             </div>
           </section>
 
