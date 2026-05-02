@@ -1,21 +1,24 @@
 import { getBMIPositionPercent } from "@/lib/bmi";
+import { getDictionary } from "@/lib/getDictionary";
+import type { Locale } from "@/lib/i18n";
 
 type BMIChartProps = {
   bmi?: number;
+  locale?: Locale;
 };
 
-const ranges = [
-  { label: "Underweight", color: "bg-sky-500", width: "21.7%" },
-  { label: "Normal", color: "bg-teal-500", width: "21.3%" },
-  { label: "Overweight", color: "bg-orange-500", width: "16.7%" },
-  { label: "Obesity", color: "bg-rose-500", width: "40.3%" }
-];
-
-export function BMIChart({ bmi }: BMIChartProps) {
+export function BMIChart({ bmi, locale = "en" }: BMIChartProps) {
   const position = typeof bmi === "number" ? getBMIPositionPercent(bmi) : undefined;
+  const labels = getDictionary(locale).categories;
+  const ranges = [
+    { label: labels.underweight, color: "bg-sky-500", width: "21.7%" },
+    { label: labels.normal, color: "bg-teal-500", width: "21.3%" },
+    { label: labels.overweight, color: "bg-orange-500", width: "16.7%" },
+    { label: labels.obesity, color: "bg-rose-500", width: "40.3%" }
+  ];
 
   return (
-    <div className="space-y-3" aria-label="BMI category chart">
+    <div className="space-y-3" aria-label={locale === "es" ? "Gráfico de categorías de IMC" : "BMI category chart"}>
       <div className="relative pt-5">
         {position !== undefined ? (
           <div
@@ -42,7 +45,7 @@ export function BMIChart({ bmi }: BMIChartProps) {
         <span>&lt;18.5</span>
         <span>18.5-24.9</span>
         <span>25-29.9</span>
-        <span>30+</span>
+        <span>{labels.thirtyPlus}</span>
       </div>
       <div className="grid grid-cols-2 gap-2 text-xs text-muted sm:grid-cols-4">
         {ranges.map((range) => (

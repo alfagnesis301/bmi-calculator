@@ -4,6 +4,8 @@ import type {
   HealthyWeightRange,
   ValidationResult
 } from "@/types/bmi";
+import { getDictionary } from "./getDictionary";
+import type { Locale } from "./i18n";
 
 const BMI_MIN_NORMAL = 18.5;
 const BMI_MAX_NORMAL = 24.9;
@@ -82,38 +84,39 @@ export function getHealthyWeightRangeUS(feet: number, inches: number): HealthyWe
   };
 }
 
-export function validateBMIInput(data: BMIInput): ValidationResult {
+export function validateBMIInput(data: BMIInput, locale: Locale = "en"): ValidationResult {
   const errors: Record<string, string> = {};
+  const validation = getDictionary(locale).validation;
 
   if (!Number.isFinite(data.age) || data.age < 2 || data.age > 120) {
-    errors.age = "Enter an age between 2 and 120.";
+    errors.age = validation.age;
   }
 
   if (data.unit === "metric") {
     if (!Number.isFinite(data.heightCm) || data.heightCm < 60 || data.heightCm > 250) {
-      errors.heightCm = "Enter a height between 60 cm and 250 cm.";
+      errors.heightCm = validation.heightCm;
     }
 
     if (!Number.isFinite(data.weightKg) || data.weightKg < 10 || data.weightKg > 300) {
-      errors.weightKg = "Enter a weight between 10 kg and 300 kg.";
+      errors.weightKg = validation.weightKg;
     }
   } else {
     const totalInches = data.feet * 12 + data.inches;
 
     if (!Number.isFinite(data.feet) || data.feet < 1 || data.feet > 8) {
-      errors.feet = "Enter feet between 1 and 8.";
+      errors.feet = validation.feet;
     }
 
     if (!Number.isFinite(data.inches) || data.inches < 0 || data.inches > 11) {
-      errors.inches = "Enter inches between 0 and 11.";
+      errors.inches = validation.inches;
     }
 
     if (!Number.isFinite(totalInches) || totalInches < 24 || totalInches > 96) {
-      errors.height = "Enter a total height between 24 and 96 inches.";
+      errors.height = validation.height;
     }
 
     if (!Number.isFinite(data.weightLb) || data.weightLb < 22 || data.weightLb > 660) {
-      errors.weightLb = "Enter a weight between 22 lb and 660 lb.";
+      errors.weightLb = validation.weightLb;
     }
   }
 
@@ -125,6 +128,26 @@ export function validateBMIInput(data: BMIInput): ValidationResult {
 
 export function formatHealthyRange(range: HealthyWeightRange): string {
   return `${range.min} - ${range.max} ${range.unit}`;
+}
+
+export function getLocalizedBMICategory(category: BMICategory, locale: Locale): BMICategory {
+  if (locale === "en") return category;
+
+  const labels = getDictionary(locale).categories;
+  const label =
+    category.key === "normal" ? labels.normalWeight : labels[category.key];
+
+  return {
+    ...category,
+    label,
+    range:
+      category.key === "underweight"
+        ? labels.below185
+        : category.key === "obesity"
+          ? labels.thirtyAndAbove
+          : category.range,
+    description: labels.descriptions[category.key],
+  };
 }
 
 export function getBMIPositionPercent(bmi: number): number {

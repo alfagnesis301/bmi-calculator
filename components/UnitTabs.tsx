@@ -1,23 +1,27 @@
 "use client";
 
 import type { UnitSystem } from "@/types/bmi";
+import { getDictionary } from "@/lib/getDictionary";
+import type { Locale } from "@/lib/i18n";
 
 type UnitTabsProps = {
   activeUnit: UnitSystem;
   onChange: (unit: UnitSystem) => void;
+  locale?: Locale;
 };
 
-const tabs: Array<{ id: UnitSystem; label: string }> = [
-  { id: "metric", label: "Metric Units" },
-  { id: "us", label: "US Units" }
-];
+export function UnitTabs({ activeUnit, onChange, locale = "en" }: UnitTabsProps) {
+  const t = getDictionary(locale).calculator;
+  const tabs: Array<{ id: UnitSystem; label: string }> = [
+    { id: "metric", label: t.metricUnits },
+    { id: "us", label: t.usUnits }
+  ];
 
-export function UnitTabs({ activeUnit, onChange }: UnitTabsProps) {
   return (
     <div
       className="grid grid-cols-2 rounded-full bg-slate-100 p-1"
       role="tablist"
-      aria-label="Choose measurement units"
+      aria-label={t.chooseUnits}
     >
       {tabs.map((tab) => (
         <button

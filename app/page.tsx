@@ -3,7 +3,16 @@ import { BMICalculator } from "@/components/BMICalculator";
 import { FAQ } from "@/components/FAQ";
 import { InContentAd, ResponsiveAdSlot, SidebarAd } from "@/components/AdPlaceholder";
 import { RelatedTools } from "@/components/RelatedTools";
+import { createLocalizedMetadata } from "@/lib/metadata";
 import { faqItems, siteConfig } from "@/lib/seo";
+
+export const metadata = createLocalizedMetadata({
+  locale: "en",
+  path: "/",
+  title: "BMI Calculator - Calculate Your Body Mass Index Online",
+  description:
+    "Calculate your BMI with metric or US units, see your adult BMI category, and get a clear healthy-weight estimate.",
+});
 
 const references = [
   { label: "CDC: Adult BMI Categories", href: "https://www.cdc.gov/bmi/adult-calculator/bmi-categories.html" },

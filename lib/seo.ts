@@ -40,3 +40,36 @@ export const faqItems = [
       "BMI compares weight with height. Body fat percentage estimates how much of the body is fat tissue. Body fat measurements can be more specific, but they often require equipment, technique, or clinical interpretation."
   }
 ];
+
+export const faqItemsEs = [
+  {
+    question: "¿El IMC es un diagnóstico?",
+    answer:
+      "No. El IMC es un cálculo orientativo basado en altura y peso. Puede indicar una categoría general en adultos, pero no diagnostica enfermedades ni sustituye la valoración de un profesional sanitario cualificado."
+  },
+  {
+    question: "¿Qué rango de IMC se considera saludable en adultos?",
+    answer:
+      "Para la mayoría de adultos, un IMC entre 18.5 y 24.9 se describe habitualmente como rango de peso saludable. Aun así, su significado puede variar según composición corporal, edad, embarazo, origen étnico e historial médico."
+  },
+  {
+    question: "¿Pueden los niños usar esta calculadora de IMC?",
+    answer:
+      "La calculadora acepta edades desde 2 años, pero niños y adolescentes necesitan percentiles de IMC para edad y sexo, no categorías fijas de adultos. Para edades de 2 a 19 años conviene usar una herramienta pediátrica o consultar a un profesional."
+  },
+  {
+    question: "¿Por qué una persona musculosa puede tener un IMC alto?",
+    answer:
+      "El IMC usa el peso total del cuerpo y no separa músculo, hueso, agua y grasa. Una persona muy entrenada puede tener un IMC alto sin tener el mismo nivel de grasa corporal que otra persona con el mismo resultado."
+  },
+  {
+    question: "¿Con qué frecuencia debería revisar mi IMC?",
+    answer:
+      "Revisarlo ocasionalmente puede ayudar a observar tendencias generales de peso. Comprobarlo a diario suele aportar poco, porque la hidratación y la comida pueden modificar el peso de un día a otro."
+  },
+  {
+    question: "¿Cuál es la diferencia entre IMC y porcentaje de grasa corporal?",
+    answer:
+      "El IMC compara peso y altura. El porcentaje de grasa corporal estima qué parte del cuerpo corresponde a tejido graso. La grasa corporal puede ser más específica, pero suele requerir equipo, técnica o interpretación profesional."
+  }
+];

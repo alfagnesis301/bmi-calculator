@@ -1,14 +1,25 @@
-import { faqItems } from "@/lib/seo";
+import type { Locale } from "@/lib/i18n";
+import { faqItems, faqItemsEs } from "@/lib/seo";
 
-export function FAQ() {
+type FAQProps = {
+  locale?: Locale;
+};
+
+export function FAQ({ locale = "en" }: FAQProps) {
+  const items = locale === "es" ? faqItemsEs : faqItems;
+
   return (
     <section className="space-y-5">
       <div>
-        <p className="text-sm font-bold uppercase tracking-[0.12em] text-teal-700">FAQ</p>
-        <h2 className="mt-2 text-3xl font-black text-ink">BMI questions, answered plainly</h2>
+        <p className="text-sm font-bold uppercase tracking-[0.12em] text-teal-700">
+          {locale === "es" ? "Preguntas frecuentes" : "FAQ"}
+        </p>
+        <h2 className="mt-2 text-3xl font-black text-ink">
+          {locale === "es" ? "Preguntas sobre el IMC, respondidas de forma clara" : "BMI questions, answered plainly"}
+        </h2>
       </div>
       <div className="grid gap-4">
-        {faqItems.map((item) => (
+        {items.map((item) => (
           <details
             key={item.question}
             className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-line"

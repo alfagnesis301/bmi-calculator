@@ -7,9 +7,12 @@ import {
   getBMICategory,
   getHealthyWeightRangeMetric,
   getHealthyWeightRangeUS,
+  getLocalizedBMICategory,
   roundBMI,
   validateBMIInput
 } from "@/lib/bmi";
+import { getDictionary } from "@/lib/getDictionary";
+import type { Locale } from "@/lib/i18n";
 import { getFieldErrorId, parsePositiveNumber } from "@/lib/validation";
 import type { BMIInput, BMIResultData, Gender, UnitSystem } from "@/types/bmi";
 import { BMIResult } from "./BMIResult";
@@ -20,7 +23,12 @@ const inputClass =
 
 const errorClass = "mt-2 text-sm font-semibold text-rose-700";
 
-export function BMICalculator() {
+type BMICalculatorProps = {
+  locale?: Locale;
+};
+
+export function BMICalculator({ locale = "en" }: BMICalculatorProps) {
+  const t = getDictionary(locale).calculator;
   const [unit, setUnit] = useState<UnitSystem>("metric");
   const [age, setAge] = useState("30");
   const [gender, setGender] = useState<Gender>("optional");
@@ -67,12 +75,12 @@ export function BMICalculator() {
     setStatus("");
 
     const input = buildInput();
-    const validation = validateBMIInput(input);
+    const validation = validateBMIInput(input, locale);
 
     if (!validation.valid) {
       setErrors(validation.errors);
       setResult(null);
-      setStatus("Please review the highlighted fields.");
+      setStatus(t.reviewFields);
       return;
     }
 
@@ -97,7 +105,7 @@ export function BMICalculator() {
       heightLabel,
       createdAt: new Date().toISOString()
     });
-    setStatus(`BMI calculated: ${bmi.toFixed(1)}.`);
+    setStatus(`${t.calculated}: ${bmi.toFixed(1)}.`);
   }
 
   function handleReset() {
@@ -110,37 +118,39 @@ export function BMICalculator() {
     setWeightLb("");
     setErrors({});
     setResult(null);
-    setStatus("Calculator reset.");
+    setStatus(t.resetDone);
   }
 
   async function handleCopy() {
     if (!result) return;
 
-    const text = `BMI: ${result.bmi.toFixed(1)} (${result.category.label}). Healthy weight estimate for ${result.heightLabel}: ${result.healthyRange.min}-${result.healthyRange.max} ${result.healthyRange.unit}.`;
+    const category = getLocalizedBMICategory(result.category, locale);
+    const text = `${locale === "es" ? "IMC" : "BMI"}: ${result.bmi.toFixed(1)} (${category.label}). ${t.healthyWeightRange} ${result.heightLabel}: ${result.healthyRange.min}-${result.healthyRange.max} ${result.healthyRange.unit}.`;
 
     try {
       await navigator.clipboard.writeText(text);
-      setStatus("Result copied to clipboard.");
+      setStatus(t.copied);
     } catch {
-      setStatus("Copy was not available in this browser.");
+      setStatus(t.copyUnavailable);
     }
   }
 
   function handleSave() {
     if (!result) return;
 
-    const date = new Date(result.createdAt).toLocaleString("en-GB");
+    const category = getLocalizedBMICategory(result.category, locale);
+    const date = new Date(result.createdAt).toLocaleString(locale === "es" ? "es-ES" : "en-GB");
     const lines = [
-      "BMI Result — BMI Checks (bmichecks.com)",
-      "─".repeat(40),
-      `Date:     ${date}`,
-      `BMI:      ${result.bmi.toFixed(1)}`,
-      `Category: ${result.category.label}`,
-      `Height:   ${result.heightLabel}`,
-      `Healthy weight range: ${result.healthyRange.min}–${result.healthyRange.max} ${result.healthyRange.unit}`,
+      t.resultFileTitle,
+      "-".repeat(40),
+      `${t.date}:     ${date}`,
+      `${locale === "es" ? "IMC" : "BMI"}:      ${result.bmi.toFixed(1)}`,
+      `${t.category}: ${category.label}`,
+      `${t.height}:   ${result.heightLabel}`,
+      `${t.healthyWeightRange}: ${result.healthyRange.min}-${result.healthyRange.max} ${result.healthyRange.unit}`,
       "",
-      "This result is for general informational purposes only.",
-      "Always consult a qualified healthcare provider for health decisions.",
+      t.medicalShort,
+      t.medicalAdvice,
     ].join("\n");
 
     const blob = new Blob([lines], { type: "text/plain;charset=utf-8" });
@@ -152,7 +162,7 @@ export function BMICalculator() {
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
-    setStatus("Result downloaded as a text file.");
+    setStatus(t.downloaded);
   }
 
   const hasAnyError = Object.keys(errors).length > 0;
@@ -168,22 +178,22 @@ export function BMICalculator() {
         <div className="relative flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div>
             <p className="text-sm font-bold uppercase tracking-[0.12em] text-teal-700">
-              Quick estimate
+              {t.eyebrow}
             </p>
             <h2 id="calculator-title" className="mt-2 text-3xl font-black leading-tight text-ink">
-              Calculate your BMI
+              {t.title}
             </h2>
           </div>
           <span className="w-fit rounded-full border border-teal-100 bg-teal-50 px-3 py-1.5 text-xs font-bold text-teal-800">
-            No account needed
+            {t.noAccount}
           </span>
         </div>
 
         <form className="relative mt-6 space-y-6" onSubmit={handleSubmit} noValidate>
-          <UnitTabs activeUnit={unit} onChange={handleUnitChange} />
+          <UnitTabs activeUnit={unit} onChange={handleUnitChange} locale={locale} />
 
           <div className="grid gap-5 md:grid-cols-[minmax(160px,0.55fr)_minmax(280px,1fr)]">
-            <Field label="Age" name="age" error={errors.age}>
+            <Field label={t.age} name="age" error={errors.age}>
               <input
                 id="age"
                 name="age"
@@ -200,7 +210,7 @@ export function BMICalculator() {
             </Field>
 
             <fieldset>
-              <legend className="text-sm font-bold text-ink">Gender</legend>
+              <legend className="text-sm font-bold text-ink">{t.gender}</legend>
               <div className="mt-2 grid min-w-0 grid-cols-3 gap-2 rounded-2xl bg-slate-100 p-1.5">
                 {(["optional", "male", "female"] as Gender[]).map((item) => (
                   <label
@@ -219,7 +229,7 @@ export function BMICalculator() {
                       checked={gender === item}
                       onChange={() => setGender(item)}
                     />
-                    {item}
+                    {item === "optional" ? t.optional : item === "male" ? t.male : t.female}
                   </label>
                 ))}
               </div>
@@ -228,7 +238,7 @@ export function BMICalculator() {
 
           {unit === "metric" ? (
             <div className="grid gap-5 sm:grid-cols-2">
-              <Field label="Height" name="heightCm" suffix="cm" error={errors.heightCm}>
+              <Field label={t.height} name="heightCm" suffix="cm" error={errors.heightCm}>
                 <input
                   id="heightCm"
                   name="heightCm"
@@ -243,7 +253,7 @@ export function BMICalculator() {
                   aria-describedby={errors.heightCm ? getFieldErrorId("heightCm") : undefined}
                 />
               </Field>
-              <Field label="Weight" name="weightKg" suffix="kg" error={errors.weightKg}>
+              <Field label={t.weight} name="weightKg" suffix="kg" error={errors.weightKg}>
                 <input
                   id="weightKg"
                   name="weightKg"
@@ -261,7 +271,7 @@ export function BMICalculator() {
             </div>
           ) : (
             <div className="grid gap-5 sm:grid-cols-3">
-              <Field label="Feet" name="feet" error={errors.feet}>
+              <Field label={t.feet} name="feet" error={errors.feet}>
                 <input
                   id="feet"
                   name="feet"
@@ -276,7 +286,7 @@ export function BMICalculator() {
                   aria-describedby={errors.feet ? getFieldErrorId("feet") : undefined}
                 />
               </Field>
-              <Field label="Inches" name="inches" error={errors.inches ?? errors.height}>
+              <Field label={t.inches} name="inches" error={errors.inches ?? errors.height}>
                 <input
                   id="inches"
                   name="inches"
@@ -293,7 +303,7 @@ export function BMICalculator() {
                   }
                 />
               </Field>
-              <Field label="Weight" name="weightLb" suffix="lb" error={errors.weightLb}>
+              <Field label={t.weight} name="weightLb" suffix="lb" error={errors.weightLb}>
                 <input
                   id="weightLb"
                   name="weightLb"
@@ -314,7 +324,7 @@ export function BMICalculator() {
           <div aria-live="assertive" className={hasAnyError ? "rounded-xl bg-rose-50 p-3" : ""}>
             {hasAnyError ? (
               <p className="text-sm font-semibold text-rose-800">
-                Please fix the fields marked below before calculating.
+                {t.fixFields}
               </p>
             ) : null}
           </div>
@@ -324,14 +334,14 @@ export function BMICalculator() {
               type="submit"
               className="min-h-[3.25rem] rounded-2xl bg-teal-700 px-5 py-3.5 text-base font-black text-white shadow-line transition hover:bg-teal-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700"
             >
-              Calculate BMI
+              {t.calculate}
             </button>
             <button
               type="button"
               onClick={handleReset}
               className="min-h-[3.25rem] rounded-2xl border border-slate-300 bg-white px-5 py-3.5 text-base font-black text-ink transition hover:bg-slate-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700"
             >
-              Reset
+              {t.reset}
             </button>
             <button
               type="button"
@@ -339,7 +349,7 @@ export function BMICalculator() {
               disabled={!result}
               className="min-h-[3.25rem] rounded-2xl border border-slate-300 bg-white px-5 py-3.5 text-base font-black text-ink transition hover:bg-slate-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700 disabled:cursor-not-allowed disabled:opacity-45"
             >
-              Copy Result
+              {t.copy}
             </button>
             <button
               type="button"
@@ -347,7 +357,7 @@ export function BMICalculator() {
               disabled={!result}
               className="min-h-[3.25rem] rounded-2xl border border-slate-300 bg-white px-5 py-3.5 text-base font-black text-ink transition hover:bg-slate-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700 disabled:cursor-not-allowed disabled:opacity-45"
             >
-              Save Locally
+              {t.save}
             </button>
           </div>
 
@@ -357,7 +367,7 @@ export function BMICalculator() {
         </form>
       </section>
 
-      <BMIResult result={result} />
+      <BMIResult result={result} locale={locale} />
     </div>
   );
 }

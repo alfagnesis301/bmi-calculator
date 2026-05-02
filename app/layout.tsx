@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { LanguageHtmlSetter } from "@/components/LanguageHtmlSetter";
 import { siteConfig } from "@/lib/seo";
 import "./globals.css";
 
@@ -40,6 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="font-sans antialiased">
+        <LanguageHtmlSetter />
         <Header />
         {children}
         <Footer />

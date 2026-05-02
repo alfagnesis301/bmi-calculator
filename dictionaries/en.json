@@ -1,0 +1,93 @@
+{
+  "site": {
+    "name": "BMI Calculator",
+    "shortName": "BMI",
+    "changeLanguage": "Change language"
+  },
+  "nav": {
+    "calculator": "Calculator",
+    "learn": "Learn",
+    "faq": "FAQ",
+    "tools": "Tools",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "footer": {
+    "description": "A fast body mass index calculator with original educational content. Results are for general information only and are not medical advice.",
+    "about": "About",
+    "editorialPolicy": "Editorial Policy",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "contact": "Contact"
+  },
+  "calculator": {
+    "eyebrow": "Quick estimate",
+    "title": "Calculate your BMI",
+    "noAccount": "No account needed",
+    "metricUnits": "Metric Units",
+    "usUnits": "US Units",
+    "chooseUnits": "Choose measurement units",
+    "age": "Age",
+    "gender": "Gender",
+    "optional": "Optional",
+    "male": "Male",
+    "female": "Female",
+    "height": "Height",
+    "weight": "Weight",
+    "feet": "Feet",
+    "inches": "Inches",
+    "calculate": "Calculate BMI",
+    "reset": "Reset",
+    "copy": "Copy Result",
+    "save": "Save Locally",
+    "fixFields": "Please fix the fields marked below before calculating.",
+    "reviewFields": "Please review the highlighted fields.",
+    "calculated": "BMI calculated",
+    "resetDone": "Calculator reset.",
+    "copied": "Result copied to clipboard.",
+    "copyUnavailable": "Copy was not available in this browser.",
+    "downloaded": "Result downloaded as a text file.",
+    "resultFileTitle": "BMI Result - BMI Checks (bmichecks.com)",
+    "date": "Date",
+    "category": "Category",
+    "healthyWeightRange": "Healthy weight range",
+    "medicalShort": "This result is for general informational purposes only.",
+    "medicalAdvice": "Always consult a qualified healthcare provider for health decisions."
+  },
+  "result": {
+    "preview": "Result preview",
+    "emptyTitle": "Your BMI result will appear here",
+    "emptyText": "Enter your measurements and select Calculate BMI to see your BMI number, adult category, healthy BMI range, and estimated healthy weight range.",
+    "yourBmi": "Your BMI",
+    "healthyBmiRange": "Healthy BMI range",
+    "healthyWeightEstimate": "Healthy weight estimate",
+    "private": "Private",
+    "runsInBrowser": "Runs in browser",
+    "disclaimer": "This calculator is for general informational purposes only and does not replace professional medical advice. Always consult a qualified healthcare provider for personal health concerns."
+  },
+  "categories": {
+    "underweight": "Underweight",
+    "normal": "Normal",
+    "normalWeight": "Normal weight",
+    "overweight": "Overweight",
+    "obesity": "Obesity",
+    "below185": "Below 18.5",
+    "thirtyPlus": "30+",
+    "thirtyAndAbove": "30.0 and above",
+    "descriptions": {
+      "underweight": "Your BMI is below the adult healthy-weight range. This can be worth discussing with a qualified healthcare provider, especially if it is unexpected.",
+      "normal": "Your BMI is within the commonly used adult healthy-weight range. BMI is still only one screening measure, so consider it alongside your wider health context.",
+      "overweight": "Your BMI is above the adult healthy-weight range. BMI does not diagnose health, but it can be a prompt to review habits or speak with a healthcare professional.",
+      "obesity": "Your BMI is in the adult obesity range. This result is not a diagnosis, but a healthcare provider can help interpret it with other measurements and personal factors."
+    }
+  },
+  "validation": {
+    "age": "Enter an age between 2 and 120.",
+    "heightCm": "Enter a height between 60 cm and 250 cm.",
+    "weightKg": "Enter a weight between 10 kg and 300 kg.",
+    "feet": "Enter feet between 1 and 8.",
+    "inches": "Enter inches between 0 and 11.",
+    "height": "Enter a total height between 24 and 96 inches.",
+    "weightLb": "Enter a weight between 22 lb and 660 lb."
+  }
+}

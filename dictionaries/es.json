@@ -1,0 +1,93 @@
+{
+  "site": {
+    "name": "Calculadora de IMC",
+    "shortName": "IMC",
+    "changeLanguage": "Cambiar idioma"
+  },
+  "nav": {
+    "calculator": "Calculadora",
+    "learn": "Guía",
+    "faq": "Preguntas frecuentes",
+    "tools": "Herramientas",
+    "blog": "Blog",
+    "contact": "Contacto"
+  },
+  "footer": {
+    "description": "Una calculadora rápida de índice de masa corporal con contenido educativo original. Los resultados son solo para información general y no constituyen consejo médico.",
+    "about": "Acerca de",
+    "editorialPolicy": "Política editorial",
+    "privacy": "Privacidad",
+    "terms": "Términos",
+    "contact": "Contacto"
+  },
+  "calculator": {
+    "eyebrow": "Estimación rápida",
+    "title": "Calcula tu IMC",
+    "noAccount": "No necesitas cuenta",
+    "metricUnits": "Unidades métricas",
+    "usUnits": "Unidades estadounidenses",
+    "chooseUnits": "Elegir unidades de medida",
+    "age": "Edad",
+    "gender": "Género",
+    "optional": "Opcional",
+    "male": "Masculino",
+    "female": "Femenino",
+    "height": "Altura",
+    "weight": "Peso",
+    "feet": "Pies",
+    "inches": "Pulgadas",
+    "calculate": "Calcular IMC",
+    "reset": "Reiniciar",
+    "copy": "Copiar resultado",
+    "save": "Guardar localmente",
+    "fixFields": "Corrige los campos marcados antes de calcular.",
+    "reviewFields": "Revisa los campos resaltados.",
+    "calculated": "IMC calculado",
+    "resetDone": "Calculadora reiniciada.",
+    "copied": "Resultado copiado.",
+    "copyUnavailable": "No se pudo copiar en este navegador.",
+    "downloaded": "Resultado descargado como archivo de texto.",
+    "resultFileTitle": "Resultado de IMC - BMI Checks (bmichecks.com)",
+    "date": "Fecha",
+    "category": "Categoría",
+    "healthyWeightRange": "Rango de peso saludable",
+    "medicalShort": "Este resultado es solo para información general.",
+    "medicalAdvice": "Consulta siempre a un profesional sanitario cualificado antes de tomar decisiones sobre tu salud."
+  },
+  "result": {
+    "preview": "Vista previa del resultado",
+    "emptyTitle": "Tu resultado de IMC aparecerá aquí",
+    "emptyText": "Introduce tus medidas y selecciona Calcular IMC para ver tu número de IMC, categoría para adultos, rango saludable y estimación de peso saludable.",
+    "yourBmi": "Tu IMC",
+    "healthyBmiRange": "Rango de IMC saludable",
+    "healthyWeightEstimate": "Estimación de peso saludable",
+    "private": "Privado",
+    "runsInBrowser": "Funciona en el navegador",
+    "disclaimer": "Esta calculadora es solo para fines informativos generales y no sustituye el consejo médico profesional. Consulta siempre a un profesional sanitario cualificado si tienes dudas personales sobre tu salud."
+  },
+  "categories": {
+    "underweight": "Bajo peso",
+    "normal": "Normal",
+    "normalWeight": "Peso normal",
+    "overweight": "Sobrepeso",
+    "obesity": "Obesidad",
+    "below185": "Por debajo de 18.5",
+    "thirtyPlus": "30 o más",
+    "thirtyAndAbove": "30.0 o más",
+    "descriptions": {
+      "underweight": "Tu IMC está por debajo del rango saludable usado para adultos. Puede ser útil comentarlo con un profesional sanitario cualificado, especialmente si el cambio fue inesperado.",
+      "normal": "Tu IMC está dentro del rango saludable usado habitualmente para adultos. Aun así, el IMC es solo una medida orientativa y conviene interpretarlo junto con tu contexto general de salud.",
+      "overweight": "Tu IMC está por encima del rango saludable usado para adultos. El IMC no diagnostica enfermedades, pero puede servir como punto de partida para revisar hábitos o hablar con un profesional sanitario.",
+      "obesity": "Tu IMC se encuentra en el rango de obesidad para adultos. Este resultado no es un diagnóstico, pero un profesional sanitario puede interpretarlo junto con otras medidas y factores personales."
+    }
+  },
+  "validation": {
+    "age": "Introduce una edad entre 2 y 120.",
+    "heightCm": "Introduce una altura entre 60 cm y 250 cm.",
+    "weightKg": "Introduce un peso entre 10 kg y 300 kg.",
+    "feet": "Introduce pies entre 1 y 8.",
+    "inches": "Introduce pulgadas entre 0 y 11.",
+    "height": "Introduce una altura total entre 24 y 96 pulgadas.",
+    "weightLb": "Introduce un peso entre 22 lb y 660 lb."
+  }
+}
