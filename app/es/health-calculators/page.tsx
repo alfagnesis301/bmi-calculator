@@ -15,7 +15,7 @@ const tools = [
     href: "/es",
     description:
       "Calcula tu Índice de Masa Corporal con unidades métricas o estadounidenses y consulta tu categoría de IMC para adultos.",
-    tags: ["Peso corporal", "Métrico y US", "Orientación adulta"],
+    tags: ["Peso corporal", "Métrico y estadounidense", "Orientación adulta"],
     color: "border-teal-200 bg-teal-50 text-teal-700"
   },
   {
@@ -31,7 +31,7 @@ const tools = [
     href: "/es/bmr-calculator",
     description:
       "Estima tu tasa metabólica basal y tus necesidades energéticas diarias según nivel de actividad.",
-    tags: ["Metabolismo basal", "TDEE", "Mifflin-St Jeor"],
+    tags: ["Metabolismo basal", "Gasto energético diario total (TDEE)", "Mifflin-St Jeor"],
     color: "border-violet-200 bg-violet-50 text-violet-700"
   },
   {
@@ -47,7 +47,7 @@ const tools = [
     href: "/es/body-fat-calculator",
     description:
       "Estima el porcentaje de grasa corporal mediante el método de circunferencias de la Marina de EE. UU.",
-    tags: ["Grasa corporal", "Método US Navy", "Cinta métrica"],
+    tags: ["Grasa corporal", "Método de la Marina de EE. UU.", "Cinta métrica"],
     color: "border-rose-200 bg-rose-50 text-rose-700"
   }
 ];

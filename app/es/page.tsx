@@ -329,11 +329,6 @@ export default function SpanishHomePage() {
           <section className="rounded-3xl border border-coral/30 bg-coral/10 p-6 sm:p-8">
             <h2 className="text-2xl font-black text-ink">Aviso de salud</h2>
             <p className="mt-4 leading-8 text-slate-800">
-              This calculator is for general informational purposes only and does not replace
-              professional medical advice. Always consult a qualified healthcare provider for
-              personal health concerns.
-            </p>
-            <p className="mt-3 leading-8 text-slate-800">
               Esta calculadora es solo para fines informativos generales y no sustituye el consejo
               médico profesional. Consulta siempre a un profesional sanitario cualificado si tienes
               dudas personales sobre tu salud.

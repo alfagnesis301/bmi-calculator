@@ -28,10 +28,27 @@ export default function SpanishBlogIndexPage() {
             Guías prácticas sobre IMC, peso saludable, nutrición y composición corporal, escritas para
             el público general y con avisos médicos claros.
           </p>
+          <p className="mt-4 max-w-2xl leading-8 text-slate-700">
+            Los artículos son educativos y no sustituyen el consejo médico profesional. Úsalos para
+            entender conceptos, preparar preguntas y enlazar con las calculadoras del sitio.
+          </p>
         </div>
       </section>
 
       <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
+        <section className="mb-10 grid gap-4 sm:grid-cols-2">
+          {[
+            ["IMC y categorías", "/es/bmi-categories"],
+            ["Peso saludable", "/es/healthy-bmi-range"],
+            ["Metabolismo y calorías", "/es/calorie-calculator"],
+            ["Composición corporal", "/es/body-fat-calculator"]
+          ].map(([label, href]) => (
+            <Link key={href} href={href} className="rounded-2xl border border-slate-200 bg-white p-5 font-black text-ink shadow-line hover:border-teal-300 hover:bg-teal-50">
+              {label}
+            </Link>
+          ))}
+        </section>
+
         <div className="grid gap-6 sm:grid-cols-2">
           {articles.map((article) => {
             const spanish = getSpanishArticle(article.slug);

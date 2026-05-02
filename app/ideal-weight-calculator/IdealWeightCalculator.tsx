@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import type { Locale } from "@/lib/i18n";
 
 type Gender = "male" | "female";
 type Unit = "metric" | "us";
@@ -34,7 +35,45 @@ function calcIdealWeight(heightIn: number, gender: Gender): Result {
 const inputClass =
   "mt-2 h-[3.25rem] w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-base font-bold text-ink outline-none transition placeholder:text-slate-400 focus:border-teal-600 focus:ring-4 focus:ring-teal-100";
 
-export function IdealWeightCalculator() {
+const labels = {
+  en: {
+    title: "Calculate your ideal weight",
+    metric: "Metric Units",
+    us: "US Units",
+    gender: "Gender",
+    male: "Male",
+    female: "Female",
+    height: "Height",
+    feet: "Feet",
+    inches: "Inches",
+    button: "Calculate Ideal Weight",
+    heightMetricError: "Enter a height between 60 and 250 cm.",
+    heightError: "Enter a valid height.",
+    rangeError: "Height is outside the supported range.",
+    average: "Average estimate",
+    note: "Results are estimates. Healthy weight depends on many individual factors beyond height and gender."
+  },
+  es: {
+    title: "Calcula tu peso ideal",
+    metric: "Unidades métricas",
+    us: "Unidades estadounidenses",
+    gender: "Género",
+    male: "Masculino",
+    female: "Femenino",
+    height: "Altura",
+    feet: "Pies",
+    inches: "Pulgadas",
+    button: "Calcular peso ideal",
+    heightMetricError: "Introduce una altura entre 60 y 250 cm.",
+    heightError: "Introduce una altura válida.",
+    rangeError: "La altura está fuera del rango admitido.",
+    average: "Estimación promedio",
+    note: "Los resultados son estimaciones. Un peso saludable depende de muchos factores individuales además de la altura y el género."
+  }
+};
+
+export function IdealWeightCalculator({ locale = "en" }: { locale?: Locale }) {
+  const t = labels[locale];
   const [unit, setUnit] = useState<Unit>("metric");
   const [gender, setGender] = useState<Gender>("male");
   const [heightCm, setHeightCm] = useState("175");
@@ -51,7 +90,7 @@ export function IdealWeightCalculator() {
     if (unit === "metric") {
       const cm = parseFloat(heightCm);
       if (!isFinite(cm) || cm < 60 || cm > 250) {
-        setError("Enter a height between 60 and 250 cm.");
+        setError(t.heightMetricError);
         return;
       }
       heightIn = cmToInches(cm);
@@ -59,14 +98,14 @@ export function IdealWeightCalculator() {
       const f = parseFloat(feet);
       const i = parseFloat(inches);
       if (!isFinite(f) || f < 1 || f > 8 || !isFinite(i) || i < 0 || i > 11) {
-        setError("Enter a valid height.");
+        setError(t.heightError);
         return;
       }
       heightIn = heightToInches(f, i);
     }
 
     if (heightIn < 24 || heightIn > 96) {
-      setError("Height is outside the supported range.");
+      setError(t.rangeError);
       return;
     }
 
@@ -75,7 +114,7 @@ export function IdealWeightCalculator() {
 
   return (
     <section className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-soft sm:p-8">
-      <h2 className="text-2xl font-black text-ink">Calculate your ideal weight</h2>
+      <h2 className="text-2xl font-black text-ink">{t.title}</h2>
 
       <form className="mt-6 space-y-6" onSubmit={handleSubmit} noValidate>
         <div className="grid grid-cols-2 rounded-full bg-slate-100 p-1">
@@ -83,18 +122,18 @@ export function IdealWeightCalculator() {
             <button key={u} type="button"
               onClick={() => { setUnit(u); setResult(null); setError(""); }}
               className={`rounded-full px-4 py-2.5 text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-teal-600 ${unit === u ? "bg-white text-ink shadow-line" : "text-muted hover:text-ink"}`}>
-              {u === "metric" ? "Metric Units" : "US Units"}
+              {u === "metric" ? t.metric : t.us}
             </button>
           ))}
         </div>
 
         <fieldset>
-          <legend className="text-sm font-bold text-ink">Gender</legend>
+          <legend className="text-sm font-bold text-ink">{t.gender}</legend>
           <div className="mt-2 grid grid-cols-2 gap-2 rounded-2xl bg-slate-100 p-1.5">
             {(["male", "female"] as Gender[]).map((g) => (
               <label key={g} className={`flex h-11 cursor-pointer items-center justify-center rounded-xl border px-2 text-sm font-black capitalize transition ${gender === g ? "border-teal-600 bg-white text-teal-950 shadow-line" : "border-transparent text-muted hover:bg-white/70"}`}>
                 <input className="sr-only" type="radio" name="gender" value={g} checked={gender === g} onChange={() => setGender(g)} />
-                {g}
+                {g === "male" ? t.male : t.female}
               </label>
             ))}
           </div>
@@ -103,7 +142,7 @@ export function IdealWeightCalculator() {
         {unit === "metric" ? (
           <div>
             <label htmlFor="heightCm" className="flex items-center justify-between text-sm font-bold text-ink">
-              <span>Height</span><span className="text-xs uppercase tracking-[0.08em] text-muted">cm</span>
+              <span>{t.height}</span><span className="text-xs uppercase tracking-[0.08em] text-muted">cm</span>
             </label>
             <input id="heightCm" type="number" inputMode="decimal" min="60" max="250"
               value={heightCm} onChange={(e) => setHeightCm(e.target.value)} className={inputClass} />
@@ -111,12 +150,12 @@ export function IdealWeightCalculator() {
         ) : (
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label htmlFor="feet" className="text-sm font-bold text-ink">Feet</label>
+              <label htmlFor="feet" className="text-sm font-bold text-ink">{t.feet}</label>
               <input id="feet" type="number" inputMode="numeric" min="1" max="8"
                 value={feet} onChange={(e) => setFeet(e.target.value)} className={inputClass} />
             </div>
             <div>
-              <label htmlFor="inches" className="text-sm font-bold text-ink">Inches</label>
+              <label htmlFor="inches" className="text-sm font-bold text-ink">{t.inches}</label>
               <input id="inches" type="number" inputMode="numeric" min="0" max="11"
                 value={inches} onChange={(e) => setInches(e.target.value)} className={inputClass} />
             </div>
@@ -127,14 +166,14 @@ export function IdealWeightCalculator() {
 
         <button type="submit"
           className="w-full min-h-[3.25rem] rounded-2xl bg-teal-700 px-5 py-3.5 text-base font-black text-white shadow-line transition hover:bg-teal-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-teal-700">
-          Calculate Ideal Weight
+          {t.button}
         </button>
       </form>
 
       {result && (
         <div className="mt-8 animate-result space-y-4" aria-live="polite">
           <div className="rounded-2xl bg-teal-50 border border-teal-200 p-5 text-center">
-            <p className="text-sm font-bold uppercase tracking-[0.1em] text-teal-700">Average estimate</p>
+            <p className="text-sm font-bold uppercase tracking-[0.1em] text-teal-700">{t.average}</p>
             <p className="mt-1 text-4xl font-black text-ink">{result.average} kg</p>
           </div>
           <div className="grid grid-cols-3 gap-3 text-sm">
@@ -152,7 +191,7 @@ export function IdealWeightCalculator() {
             </div>
           </div>
           <p className="text-sm leading-6 text-muted">
-            Results are estimates. Healthy weight depends on many individual factors beyond height and gender.
+            {t.note}
           </p>
         </div>
       )}
