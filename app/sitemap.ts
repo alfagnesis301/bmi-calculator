@@ -8,11 +8,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "", changeFrequency: "weekly", priority: 1, lastModified: new Date() },
     { path: "/health-calculators", changeFrequency: "monthly", priority: 0.9, lastModified: new Date() },
     { path: "/blog", changeFrequency: "weekly", priority: 0.9, lastModified: new Date() },
+    { path: "/bmi-guide", changeFrequency: "monthly", priority: 0.95, lastModified: new Date(), enOnly: true },
+    { path: "/start-here", changeFrequency: "monthly", priority: 0.85, lastModified: new Date(), enOnly: true },
     { path: "/healthy-bmi-range", changeFrequency: "monthly", priority: 0.85, lastModified: new Date() },
     { path: "/how-to-find-your-bmi-score", changeFrequency: "monthly", priority: 0.85, lastModified: new Date() },
-    { path: "/bmi-categories", changeFrequency: "monthly", priority: 0.85, lastModified: new Date() },
-    { path: "/bmi-formula", changeFrequency: "monthly", priority: 0.85, lastModified: new Date() },
-    { path: "/bmi-chart", changeFrequency: "monthly", priority: 0.85, lastModified: new Date() },
     { path: "/ideal-weight-calculator", changeFrequency: "monthly", priority: 0.8, lastModified: new Date() },
     { path: "/bmr-calculator", changeFrequency: "monthly", priority: 0.8, lastModified: new Date() },
     { path: "/calorie-calculator", changeFrequency: "monthly", priority: 0.8, lastModified: new Date() },
@@ -27,18 +26,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = paths.flatMap((route) => {
     const enUrl = `${BASE}${route.path || ""}`;
     const esUrl = `${BASE}/es${route.path || ""}`;
-    const alternates = {
-      languages: {
-        en: enUrl,
-        es: esUrl,
-        "x-default": enUrl,
-      },
-    };
+    const enOnly = "enOnly" in route && route.enOnly === true;
+    const alternates = enOnly
+      ? { languages: { en: enUrl, "x-default": enUrl } }
+      : { languages: { en: enUrl, es: esUrl, "x-default": enUrl } };
 
-    return [
-      { url: enUrl, lastModified: route.lastModified, changeFrequency: route.changeFrequency, priority: route.priority, alternates },
-      { url: esUrl, lastModified: route.lastModified, changeFrequency: route.changeFrequency, priority: route.priority * 0.95, alternates },
+    const entries = [
+      { url: enUrl, lastModified: route.lastModified, changeFrequency: route.changeFrequency, priority: route.priority, alternates }
     ];
+    if (!enOnly) {
+      entries.push({
+        url: esUrl,
+        lastModified: route.lastModified,
+        changeFrequency: route.changeFrequency,
+        priority: (Math.round(route.priority * 0.95 * 100) / 100) as 1 | 0.9 | 0.95 | 0.85 | 0.8 | 0.5 | 0.4 | 0.3,
+        alternates
+      });
+    }
+    return entries;
   });
 
   const articleRoutes: MetadataRoute.Sitemap = getArticles().flatMap((article) => {
