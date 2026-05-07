@@ -24,7 +24,7 @@ export function Header() {
           aria-label={t.site.name}
           className="rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-600"
         >
-          <Logo />
+          <Logo height={36} priority className="h-9 w-auto" />
         </Link>
         <div className="flex items-center gap-3">
           <nav className="hidden items-center gap-5 text-sm font-semibold text-muted md:flex" aria-label="Primary">
