@@ -7,7 +7,10 @@ type LocalizedMetadataInput = {
   path: string;
   title: string;
   description: string;
+  openGraphDescription?: string;
+  twitterDescription?: string;
   type?: "website" | "article";
+  image?: string;
 };
 
 export function createLocalizedMetadata({
@@ -15,7 +18,10 @@ export function createLocalizedMetadata({
   path,
   title,
   description,
+  openGraphDescription,
+  twitterDescription,
   type = "website",
+  image = "/logo.png",
 }: LocalizedMetadataInput): Metadata {
   const canonicalPath = localizedPath(path, locale);
   const url = `${siteConfig.url}${canonicalPath}`;
@@ -31,17 +37,24 @@ export function createLocalizedMetadata({
     },
     openGraph: {
       title,
-      description,
+      description: openGraphDescription ?? description,
       url,
       siteName: siteConfig.name,
       type,
       locale: toOgLocale(locale),
       alternateLocale: locale === "es" ? ["en_US"] : ["es_ES"],
+      images: [
+        {
+          url: image,
+          alt: siteConfig.name,
+        }
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title,
-      description,
+      description: twitterDescription ?? description,
+      images: [image],
     },
     robots: {
       index: true,

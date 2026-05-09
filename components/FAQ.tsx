@@ -15,7 +15,7 @@ export function FAQ({ locale = "en" }: FAQProps) {
           {locale === "es" ? "Preguntas frecuentes" : "FAQ"}
         </p>
         <h2 className="mt-2 text-3xl font-black text-ink">
-          {locale === "es" ? "Preguntas sobre el IMC, respondidas de forma clara" : "BMI questions, answered plainly"}
+          {locale === "es" ? "Preguntas sobre el IMC, respondidas de forma clara" : "BMI Calculator FAQ"}
         </h2>
       </div>
       <div className="grid gap-4">

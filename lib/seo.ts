@@ -11,34 +11,39 @@ export const siteConfig = {
 
 export const faqItems = [
   {
-    question: "Is BMI a diagnosis?",
+    question: "What is a BMI calculator?",
     answer:
-      "No. BMI is a screening calculation based on height and weight. It can suggest a general weight category, but it cannot diagnose a medical condition or replace advice from a qualified clinician."
+      "A BMI calculator estimates your Body Mass Index using your height and weight. It helps you see whether your result falls into a standard adult BMI category."
   },
   {
-    question: "Which BMI range is considered healthy for adults?",
+    question: "How do I calculate my BMI?",
     answer:
-      "For most adults, a BMI from 18.5 to 24.9 is commonly described as the healthy-weight range. The meaning of that number can vary with body composition, age, pregnancy, ethnicity, and medical history."
+      "BMI is calculated by dividing weight in kilograms by height in meters squared. The formula is BMI = kg / m2."
+  },
+  {
+    question: "What is a healthy BMI range?",
+    answer:
+      "For most adults, a BMI between 18.5 and 24.9 is commonly considered the healthy weight range."
+  },
+  {
+    question: "Is BMI accurate for everyone?",
+    answer:
+      "No. BMI is a general screening tool. It does not directly measure body fat, muscle mass, waist circumference, or individual health conditions."
+  },
+  {
+    question: "What does a BMI over 25 mean?",
+    answer:
+      "A BMI between 25 and 29.9 falls into the overweight category. A BMI of 30 or above falls into the obesity category. These are broad screening categories, not a diagnosis."
   },
   {
     question: "Can children use this BMI calculator?",
     answer:
-      "This calculator accepts ages 2 and above, but children and teens need BMI-for-age percentiles rather than adult categories. A pediatric growth-chart tool is more appropriate for ages 2 to 19."
+      "Adult BMI categories are not interpreted the same way for children and teenagers. Children usually need age- and sex-specific BMI percentiles."
   },
   {
-    question: "Why can a muscular person have a high BMI?",
+    question: "Should I rely only on BMI?",
     answer:
-      "BMI uses total body weight, so it does not separate muscle, bone, fluid, and body fat. Athletes or highly muscular people may have a higher BMI without having the same body-fat level as another person with the same score."
-  },
-  {
-    question: "How often should I check my BMI?",
-    answer:
-      "Occasional checks can be useful when tracking general weight trends. Daily BMI checks are rarely helpful because normal hydration and food intake can shift body weight from day to day."
-  },
-  {
-    question: "What is the difference between BMI and body fat percentage?",
-    answer:
-      "BMI compares weight with height. Body fat percentage estimates how much of the body is fat tissue. Body fat measurements can be more specific, but they often require equipment, technique, or clinical interpretation."
+      "No. BMI can be useful, but it should be considered alongside other health indicators and professional advice."
   }
 ];
 

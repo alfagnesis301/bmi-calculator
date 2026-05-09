@@ -36,7 +36,7 @@
     "weight": "Weight",
     "feet": "Feet",
     "inches": "Inches",
-    "calculate": "Calculate BMI",
+    "calculate": "Calculate My BMI",
     "reset": "Reset",
     "copy": "Copy Result",
     "save": "Save Locally",
@@ -63,7 +63,7 @@
     "healthyWeightEstimate": "Healthy weight estimate",
     "private": "Private",
     "runsInBrowser": "Runs in browser",
-    "disclaimer": "This calculator is for general informational purposes only and does not replace professional medical advice. Always consult a qualified healthcare provider for personal health concerns."
+    "disclaimer": "BMI is a screening tool and not a medical diagnosis. This calculator is for general informational use only and is not a substitute for professional medical advice. If you are concerned about your weight or health, speak with a qualified healthcare professional."
   },
   "categories": {
     "underweight": "Underweight",
