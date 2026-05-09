@@ -32,7 +32,7 @@ export function createLocalizedMetadata({
     title,
     description,
     alternates: {
-      canonical: canonicalPath,
+      canonical: url,
       languages,
     },
     openGraph: {

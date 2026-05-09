@@ -46,7 +46,9 @@ export default function HomePage() {
         priceCurrency: "USD"
       },
       publisher: {
-        "@id": `${homeUrl}#organization`
+        "@type": "Organization",
+        name: "BMI Checks",
+        url: homeUrl
       }
     },
     {
@@ -79,23 +81,15 @@ export default function HomePage() {
       name: "BMI Checks",
       url: homeUrl,
       logo: `${siteConfig.url}/logo.png`
-    },
-    {
-      "@type": "WebSite",
-      "@id": `${homeUrl}#website`,
-      name: "BMI Checks",
-      url: homeUrl,
-      publisher: {
-        "@id": `${homeUrl}#organization`
-      }
     }
   ]};
+  const jsonLdHtml = JSON.stringify(jsonLd).replace(/</g, "\\u003c");
 
   return (
     <main>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdHtml }}
       />
 
       <section className="relative overflow-hidden bg-[radial-gradient(circle_at_12%_18%,#c8f5ee_0,transparent_30%),radial-gradient(circle_at_88%_8%,#ffe1d4_0,transparent_26%),linear-gradient(135deg,#f8fffd_0%,#f4f8f8_50%,#fff7f1_100%)]">
