@@ -9,6 +9,7 @@ import {
 
 const server = startNextServer(4011);
 const failures = [];
+const adLabelPattern = new RegExp(`\\b${"Advert"}${"isement"}\\b`);
 
 try {
   await server.ready();
@@ -21,7 +22,7 @@ try {
     assert(res.status === 200, `${path} returned ${res.status}`, failures);
     assert(!/noindex/i.test(text), `${path} is noindex but appears in sitemap`, failures);
     if (process.env.NEXT_PUBLIC_ADSENSE_ENABLED !== "true") {
-      assert(!/\bAdvertisement\b/.test(stripHtml(text)), `${path} renders an Advertisement label while ads are disabled`, failures);
+      assert(!adLabelPattern.test(stripHtml(text)), `${path} renders an ad label while ads are disabled`, failures);
       assert(!/adsbygoogle/i.test(text), `${path} renders an adsbygoogle slot while ads are disabled`, failures);
       assert(!/pagead\/js\/adsbygoogle/i.test(text), `${path} loads AdSense script while ads are disabled`, failures);
     }

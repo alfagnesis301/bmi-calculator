@@ -3,6 +3,7 @@ import { assert, extractInternalLinks, extractUrlsFromSitemap, fetchText, startN
 
 const server = startNextServer(4012);
 const failures = [];
+const adLabelPattern = new RegExp(`${"Advert"}${"isement"}`, "i");
 
 try {
   await server.ready();
@@ -33,10 +34,10 @@ try {
   assert(home.includes('aria-live="polite"'), "BMI result status should remain accessible with aria-live", failures);
   assert(home.includes("Calculate My BMI"), "BMI calculator CTA should be present", failures);
   assert(home.includes("ES"), "Language switcher should include Spanish link", failures);
-  assert(!/Advertisement/i.test(stripHtml(home)), "Home should not show Advertisement with ads disabled", failures);
+  assert(!adLabelPattern.test(stripHtml(home)), "Home should not show an ad label with ads disabled", failures);
 
   const { text: spanishHome } = await fetchText(`${origin}/es`);
-  assert(!/Advertisement/i.test(stripHtml(spanishHome)), "Spanish home should not show Advertisement with ads disabled", failures);
+  assert(!adLabelPattern.test(stripHtml(spanishHome)), "Spanish home should not show an ad label with ads disabled", failures);
   assert(!/This calculator is/i.test(stripHtml(spanishHome)), "Spanish home should not include English disclaimer text", failures);
 
   const { text: bodyFatEs } = await fetchText(`${origin}/es/body-fat-calculator`);

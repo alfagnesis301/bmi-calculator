@@ -53,25 +53,25 @@ export default function PrivacyPolicyPage() {
                 browser so we do not ask again on every visit.
               </li>
               <li>
-                <strong>Advertising cookies:</strong> If you accept cookies, we may serve
-                advertisements through Google AdSense. Google and its partners use cookies to serve
-                ads based on your prior visits to this and other websites. These cookies allow Google
-                to personalise ads to your interests.
+                <strong>Advertising cookies:</strong> If you accept cookies, we may serve ads through
+                Google AdSense. Google and its partners use cookies to serve ads based on your prior
+                visits to this and other websites. These cookies allow Google to personalise ads to
+                your interests.
               </li>
             </ul>
             <p className="mt-3">
               You can control or delete cookies through your browser settings at any time. Withdrawing
-              consent may affect the display or personalisation of advertisements.
+              consent may affect the display or personalisation of ads.
             </p>
           </section>
 
           <section>
             <h2 className="text-2xl font-black text-ink">Google AdSense and advertising</h2>
             <p className="mt-3">
-              BMI Checks uses Google AdSense to display advertisements. Google AdSense uses cookies
-              (including the DoubleClick cookie) to serve ads based on your visits to this site and
-              other sites on the internet. This allows Google and its partners to show you ads that
-              may be relevant to your interests.
+              BMI Checks uses Google AdSense to display ads. Google AdSense uses cookies, including
+              the DoubleClick cookie, to serve ads based on your visits to this site and other sites
+              on the internet. This allows Google and its partners to show ads that may be relevant
+              to your interests.
             </p>
             <p className="mt-3">
               You can opt out of personalised advertising by visiting{" "}

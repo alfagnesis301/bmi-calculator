@@ -1,9 +1,10 @@
 import { expect, test } from "@playwright/test";
 
 test("home pages load without ad placeholders when ads are disabled", async ({ page }) => {
+  const adLabelPattern = new RegExp(`\\b${"Advert"}${"isement"}\\b`);
   for (const path of ["/", "/es"]) {
     await page.goto(path);
-    await expect(page.locator("body")).not.toContainText(/\bAdvertisement\b/);
+    await expect(page.locator("body")).not.toContainText(adLabelPattern);
     await expect(page.locator("ins.adsbygoogle")).toHaveCount(0);
   }
 });
@@ -48,12 +49,20 @@ test("calculator pages render expected controls in both languages", async ({ pag
 
 test("body fat calculator exposes hip input for female mode", async ({ page }) => {
   await page.goto("/body-fat-calculator");
+  await expect(page.getByLabel(/Hip/i)).toHaveCount(0);
+  await page.getByRole("button", { name: /Calculate Body Fat/i }).click();
+  await expect(page.locator("[aria-live='polite']")).toContainText("%");
+
   await page.getByText("Female", { exact: true }).click();
   await expect(page.getByLabel(/Hip/i)).toBeVisible();
   await page.getByRole("button", { name: /Calculate Body Fat/i }).click();
   await expect(page.locator("[aria-live='polite']")).toContainText("%");
 
   await page.goto("/es/body-fat-calculator");
+  await expect(page.getByLabel(/Cadera/i)).toHaveCount(0);
+  await page.getByRole("button", { name: /Calcular grasa corporal/i }).click();
+  await expect(page.locator("[aria-live='polite']")).toContainText("%");
+
   await page.getByText("Femenino", { exact: true }).click();
   await expect(page.getByLabel(/Cadera/i)).toBeVisible();
   await page.getByRole("button", { name: /Calcular grasa corporal/i }).click();

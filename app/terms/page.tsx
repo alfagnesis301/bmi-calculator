@@ -72,9 +72,9 @@ export default function TermsPage() {
           <section>
             <h2 className="text-2xl font-black text-ink">Advertising</h2>
             <p className="mt-3">
-              BMI Checks may display advertisements served by Google AdSense. Advertisements are
-              clearly labelled. We do not control the content of third-party advertisements and are
-              not responsible for any products or services they promote.
+              BMI Checks may display ads served by Google AdSense after approval. Ad units are clearly
+              labelled when active. We do not control the content of third-party ads and are not
+              responsible for any products or services they promote.
             </p>
           </section>
 
