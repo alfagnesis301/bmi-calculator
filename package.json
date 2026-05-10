@@ -11,7 +11,7 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "test": "node scripts/smoke-tests.mjs",
+    "test": "node scripts/smoke-tests.mjs && node scripts/run-playwright.mjs",
     "audit:routes": "node scripts/audit-public-routes.mjs",
     "audit:adsense": "node scripts/check-adsense-readiness.mjs",
     "audit:i18n": "node scripts/audit-i18n.mjs",
@@ -23,6 +23,7 @@
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@playwright/test": "^1.51.1",
     "@types/node": "^20.17.16",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
