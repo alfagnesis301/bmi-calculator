@@ -46,6 +46,37 @@ export default function SpanishHowToFindBMIScorePage() {
           )
         },
         {
+          title: "Fórmula manual",
+          body: (
+            <p>
+              En unidades métricas, el IMC se calcula como peso en kilogramos dividido entre altura en
+              metros al cuadrado. Por ejemplo, 70 kg y 1.75 m dan 70 / 1.75^2 = 22.9. En unidades
+              estadounidenses se usa IMC = 703 x peso en libras / altura en pulgadas al cuadrado.
+            </p>
+          )
+        },
+        {
+          title: "Errores frecuentes",
+          body: (
+            <ul className="list-disc space-y-2 pl-6">
+              <li>Usar centímetros directamente sin convertirlos a metros.</li>
+              <li>No convertir pies y pulgadas a pulgadas totales.</li>
+              <li>Redondear demasiado pronto en resultados cercanos a un límite.</li>
+              <li>Usar rangos adultos para niños o adolescentes.</li>
+            </ul>
+          )
+        },
+        {
+          title: "Aviso de salud",
+          body: (
+            <p>
+              El IMC es una herramienta de cribado para adultos. No mide grasa corporal directamente
+              ni sustituye una valoración sanitaria. Consulta a un profesional cualificado si el resultado
+              te preocupa, si hubo cambios de peso inesperados o si tienes una condición médica.
+            </p>
+          )
+        },
+        {
           title: "Calcula tu IMC ahora",
           body: (
             <p>

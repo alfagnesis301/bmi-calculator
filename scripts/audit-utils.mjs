@@ -4,6 +4,7 @@ import { join } from "node:path";
 export const REQUIRED_ROUTES = [
   "/",
   "/es",
+  "/es/bmi-guide",
   "/bmi-guide",
   "/bmi-categories",
   "/bmi-formula",

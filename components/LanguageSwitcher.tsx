@@ -13,7 +13,7 @@ import {
   type Locale,
 } from "@/lib/i18n";
 
-const englishOnlyPaths = new Set(["/bmi-guide", "/start-here"]);
+const englishOnlyPaths = new Set(["/start-here"]);
 
 export function LanguageSwitcher() {
   const pathname = usePathname() || "/";

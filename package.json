@@ -14,7 +14,8 @@
     "test": "node scripts/smoke-tests.mjs",
     "audit:routes": "node scripts/audit-public-routes.mjs",
     "audit:adsense": "node scripts/check-adsense-readiness.mjs",
-    "predeploy": "npm run lint && npm run typecheck && npm run build && npm run test && npm run audit:routes && npm run audit:adsense"
+    "audit:i18n": "node scripts/audit-i18n.mjs",
+    "predeploy": "npm run lint && npm run typecheck && npm run build && npm run test && npm run audit:routes && npm run audit:adsense && npm run audit:i18n"
   },
   "dependencies": {
     "next": "^16.2.4",

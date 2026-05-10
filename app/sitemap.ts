@@ -8,7 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "", changeFrequency: "weekly", priority: 1, lastModified: new Date() },
     { path: "/health-calculators", changeFrequency: "monthly", priority: 0.9, lastModified: new Date() },
     { path: "/blog", changeFrequency: "weekly", priority: 0.9, lastModified: new Date() },
-    { path: "/bmi-guide", changeFrequency: "monthly", priority: 0.95, lastModified: new Date(), enOnly: true },
+    { path: "/bmi-guide", changeFrequency: "monthly", priority: 0.95, lastModified: new Date() },
     { path: "/start-here", changeFrequency: "monthly", priority: 0.85, lastModified: new Date(), enOnly: true },
     { path: "/bmi-categories", changeFrequency: "monthly", priority: 0.8, lastModified: new Date() },
     { path: "/bmi-formula", changeFrequency: "monthly", priority: 0.8, lastModified: new Date() },

@@ -1,4 +1,11 @@
-import { assert, fetchText, startNextServer } from "./audit-utils.mjs";
+import {
+  assert,
+  extractUrlsFromSitemap,
+  fetchText,
+  startNextServer,
+  stripHtml,
+  wordCount
+} from "./audit-utils.mjs";
 
 const server = startNextServer(4011);
 const failures = [];
@@ -6,16 +13,24 @@ const failures = [];
 try {
   await server.ready();
   const origin = server.baseUrl;
-  const pages = ["/", "/es", "/health-calculators", "/es/health-calculators", "/blog", "/es/blog"];
+  const { text: sitemap } = await fetchText(`${origin}/sitemap.xml`);
+  const pages = extractUrlsFromSitemap(sitemap).map((url) => new URL(url).pathname || "/");
 
   for (const path of pages) {
     const { res, text } = await fetchText(`${origin}${path}`, { redirect: "manual" });
     assert(res.status === 200, `${path} returned ${res.status}`, failures);
+    assert(!/noindex/i.test(text), `${path} is noindex but appears in sitemap`, failures);
     if (process.env.NEXT_PUBLIC_ADSENSE_ENABLED !== "true") {
-      assert(!/Advertisement/i.test(text), `${path} renders an Advertisement label while ads are disabled`, failures);
+      assert(!/\bAdvertisement\b/.test(stripHtml(text)), `${path} renders an Advertisement label while ads are disabled`, failures);
       assert(!/adsbygoogle/i.test(text), `${path} renders an adsbygoogle slot while ads are disabled`, failures);
       assert(!/pagead\/js\/adsbygoogle/i.test(text), `${path} loads AdSense script while ads are disabled`, failures);
     }
+    const visibleText = stripHtml(text);
+    assert(!/\bTODO\b/.test(visibleText), `${path} contains unfinished TODO text`, failures);
+    assert(!/\b(coming soon|lorem ipsum)\b/i.test(visibleText), `${path} contains unfinished draft text`, failures);
+    assert(!/placeholder ad/i.test(visibleText), `${path} contains unfinished ad placeholder text`, failures);
+    const minWords = /\/(contact|privacy-policy|terms)$/.test(path) ? 60 : 220;
+    assert(wordCount(text) >= minWords, `${path} looks thin for AdSense review: ${wordCount(text)} words`, failures);
   }
 
   const { text: adsTxt } = await fetchText(`${origin}/ads.txt`);

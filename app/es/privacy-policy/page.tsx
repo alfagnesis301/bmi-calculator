@@ -98,6 +98,63 @@ export default function SpanishPrivacyPolicyPage() {
           )
         },
         {
+          title: "Datos de salud y cálculos locales",
+          body: (
+            <>
+              <p>
+                BMI Checks no solicita nombre, dirección, número de teléfono ni historial médico para usar
+                sus calculadoras. Las medidas introducidas se procesan en el navegador para generar el
+                resultado y no se guardan en una base de datos del sitio.
+              </p>
+              <p>
+                Si una función permite guardar un resultado localmente, ese dato queda en el dispositivo
+                del usuario mediante almacenamiento del navegador. Borrar datos del navegador o usar modo
+                privado puede eliminar esa información local.
+              </p>
+            </>
+          )
+        },
+        {
+          title: "Consentimiento y publicidad",
+          body: (
+            <>
+              <p>
+                Antes de la aprobación publicitaria, el sitio puede incluir solo la configuración técnica
+                necesaria para verificación, sin mostrar unidades de anuncios. Cuando la publicidad esté
+                habilitada, se informará de forma clara y no se colocarán anuncios simulando navegación
+                ni junto a botones de calculadoras.
+              </p>
+              <p>
+                Puedes bloquear o eliminar cookies desde el navegador. También puedes revisar las opciones
+                de personalización de Google y las políticas de los proveedores externos enlazadas en esta
+                página.
+              </p>
+            </>
+          )
+        },
+        {
+          title: "Seguridad y retención",
+          body: (
+            <p>
+              El sitio está alojado en Netlify, que puede conservar registros técnicos durante periodos
+              limitados para seguridad, depuración y rendimiento. BMI Checks no vende datos personales ni
+              crea perfiles médicos a partir de los resultados de las calculadoras.
+            </p>
+          )
+        },
+        {
+          title: "Cómo contactar",
+          body: (
+            <p>
+              Para preguntas sobre privacidad, solicitudes de corrección o eliminación de información,
+              escribe a{" "}
+              <a href="mailto:contact@bmichecks.com" className="font-semibold text-teal-700 underline-offset-4 hover:underline">
+                contact@bmichecks.com
+              </a>. Revisaremos la solicitud y responderemos dentro de un plazo razonable.
+            </p>
+          )
+        },
+        {
           title: "Cambios en esta política",
           body: (
             <p>

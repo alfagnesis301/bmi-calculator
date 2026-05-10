@@ -38,7 +38,7 @@ const labels = {
   },
   es: {
     title: "Estima tu grasa corporal",
-    helper: "Introduce todas las medidas en centímetros.",
+    helper: "Introduce todas las medidas en centímetros. En modo femenino también se solicita cadera.",
     gender: "Género",
     male: "Masculino",
     female: "Femenino",

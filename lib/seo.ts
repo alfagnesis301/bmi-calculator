@@ -62,7 +62,7 @@ export const faqItemsEs = [
   {
     question: "¿Pueden los niños usar esta calculadora de IMC?",
     answer:
-      "La calculadora acepta edades desde 2 años, pero niños y adolescentes necesitan percentiles de IMC para edad y sexo, no categorías fijas de adultos. Para edades de 2 a 19 años conviene usar una herramienta pediátrica o consultar a un profesional."
+      "La calculadora principal está orientada a adultos de 20 años o más. Niños y adolescentes necesitan percentiles de IMC para edad y sexo, no categorías fijas de adultos."
   },
   {
     question: "¿Por qué una persona musculosa puede tener un IMC alto?",
