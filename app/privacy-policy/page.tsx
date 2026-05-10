@@ -26,7 +26,7 @@ export default function PrivacyPolicyPage() {
           <section>
             <h2 className="text-2xl font-black text-ink">Information we collect</h2>
             <p className="mt-3">
-              <strong>Calculator data: The BMI calculator</strong> runs entirely in your browser. Any
+              <strong>Calculator data: The BMI calculator runs entirely in your browser.</strong> Any
               measurements you enter (age, height, weight) are never sent to our servers. If you use
               the optional &quot;Save Locally&quot; feature, results are stored only on your own device using
               your browser&apos;s localStorage and are not accessible to us.
