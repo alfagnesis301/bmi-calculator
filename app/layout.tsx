@@ -36,13 +36,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className="font-sans antialiased">
         <LanguageHtmlSetter />
-        <Script
-          id="adsense-loader"
-          async
-          strategy="afterInteractive"
-          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${siteConfig.adsenseClientId}`}
-          crossOrigin="anonymous"
-        />
+        {siteConfig.adsenseEnabled ? (
+          <Script
+            id="adsense-loader"
+            async
+            strategy="afterInteractive"
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${siteConfig.adsenseClientId}`}
+            crossOrigin="anonymous"
+          />
+        ) : null}
         <Script
           id="ga-loader"
           strategy="afterInteractive"

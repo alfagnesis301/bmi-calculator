@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Contact | BMI Calculator",
-  description: "Contact information for BMI Calculator."
+  description:
+    "Contact BMI Checks for corrections, feedback, privacy questions, or general questions about the calculator and educational content."
 };
 
 export default function ContactPage() {

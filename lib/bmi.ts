@@ -88,7 +88,7 @@ export function validateBMIInput(data: BMIInput, locale: Locale = "en"): Validat
   const errors: Record<string, string> = {};
   const validation = getDictionary(locale).validation;
 
-  if (!Number.isFinite(data.age) || data.age < 2 || data.age > 120) {
+  if (!Number.isFinite(data.age) || data.age < 20 || data.age > 120) {
     errors.age = validation.age;
   }
 

@@ -9,8 +9,11 @@ import {
   localeNames,
   localizedPath,
   locales,
+  stripLocale,
   type Locale,
 } from "@/lib/i18n";
+
+const englishOnlyPaths = new Set(["/bmi-guide", "/start-here"]);
 
 export function LanguageSwitcher() {
   const pathname = usePathname() || "/";
@@ -32,10 +35,12 @@ export function LanguageSwitcher() {
     >
       {locales.map((locale) => {
         const isActive = locale === activeLocale;
+        const cleanPath = stripLocale(pathname);
+        const href = locale === "es" && englishOnlyPaths.has(cleanPath) ? "/es" : localizedPath(pathname, locale);
         return (
           <Link
             key={locale}
-            href={localizedPath(pathname, locale)}
+            href={href}
             aria-label={`${dictionary.site.changeLanguage}: ${localeNames[locale]}`}
             aria-current={isActive ? "page" : undefined}
             onClick={() => rememberLanguage(locale)}

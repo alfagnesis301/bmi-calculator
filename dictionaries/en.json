@@ -82,7 +82,7 @@
     }
   },
   "validation": {
-    "age": "Enter an age between 2 and 120.",
+    "age": "Enter an adult age between 20 and 120.",
     "heightCm": "Enter a height between 60 cm and 250 cm.",
     "weightKg": "Enter a weight between 10 kg and 300 kg.",
     "feet": "Enter feet between 1 and 8.",

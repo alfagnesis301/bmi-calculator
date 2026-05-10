@@ -4,9 +4,10 @@ export const siteConfig = {
   title: "BMI Calculator - Check Your BMI and Healthy Weight Range",
   description:
     "Use this free BMI calculator to check your body mass index, see adult BMI categories, and understand the healthy BMI range of 18.5 to 24.9.",
-  contactEmail: "[CONTACT_EMAIL]",
+  contactEmail: "contact@bmichecks.com",
   adsenseClientId: "ca-pub-7051995204409435",
-  gaMeasurementId: "G-7TS0MBNL8S"
+  gaMeasurementId: "G-7TS0MBNL8S",
+  adsenseEnabled: process.env.NEXT_PUBLIC_ADSENSE_ENABLED === "true"
 };
 
 export const faqItems = [

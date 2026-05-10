@@ -199,7 +199,7 @@ export function BMICalculator({ locale = "en" }: BMICalculatorProps) {
                 name="age"
                 type="number"
                 inputMode="numeric"
-                min="2"
+                min="20"
                 max="120"
                 value={age}
                 onChange={(event) => setAge(event.target.value)}

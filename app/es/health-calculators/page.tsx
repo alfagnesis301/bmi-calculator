@@ -97,11 +97,49 @@ export default function SpanishHealthCalculatorsPage() {
         </div>
 
         <section className="mt-12 rounded-3xl border border-slate-200 bg-white p-6 shadow-line sm:p-8">
+          <h2 className="text-2xl font-black text-ink">Que calculadora deberias usar</h2>
+          <p className="mt-4 leading-8 text-slate-700">
+            Empieza por la Calculadora de IMC si quieres una categoria adulta orientativa. Usa TMB
+            para estimar energia en reposo y la calculadora de calorias cuando necesites un objetivo
+            diario segun actividad. Peso ideal y grasa corporal aportan contexto adicional, pero no
+            reemplazan una valoracion profesional.
+          </p>
+          <div className="mt-5 overflow-x-auto">
+            <table className="w-full min-w-[720px] border-collapse text-left text-sm">
+              <caption className="sr-only">Comparacion de calculadoras de BMI Checks</caption>
+              <thead className="border-b border-slate-200 text-ink">
+                <tr>
+                  <th className="py-3 pr-4 font-black">Herramienta</th>
+                  <th className="py-3 pr-4 font-black">Mejor para</th>
+                  <th className="py-3 font-black">Uso responsable</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100 text-slate-700">
+                <tr><td className="py-3 pr-4 font-semibold">IMC</td><td className="py-3 pr-4">Categoria adulta de peso</td><td className="py-3">No mide grasa corporal directamente.</td></tr>
+                <tr><td className="py-3 pr-4 font-semibold">TMB</td><td className="py-3 pr-4">Calorias en reposo y gasto diario</td><td className="py-3">Los factores de actividad son aproximados.</td></tr>
+                <tr><td className="py-3 pr-4 font-semibold">Calorias</td><td className="py-3 pr-4">Mantenimiento, perdida o ganancia</td><td className="py-3">Evita deficits extremos sin orientacion profesional.</td></tr>
+                <tr><td className="py-3 pr-4 font-semibold">Peso ideal</td><td className="py-3 pr-4">Referencias por formulas</td><td className="py-3">No es un objetivo obligatorio.</td></tr>
+                <tr><td className="py-3 pr-4 font-semibold">Grasa corporal</td><td className="py-3 pr-4">Estimacion por circunferencias</td><td className="py-3">La tecnica de medicion cambia el resultado.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section className="mt-12 rounded-3xl border border-slate-200 bg-white p-6 shadow-line sm:p-8">
           <h2 className="text-2xl font-black text-ink">Sobre estas herramientas</h2>
           <p className="mt-4 leading-8 text-slate-700">
             Las calculadoras de BMI Checks utilizan fórmulas estándar publicadas y recursos de salud
             pública. Los resultados son estimaciones generales y no sustituyen una valoración clínica.
             Para decisiones personales sobre salud, consulta a un profesional sanitario cualificado.
+          </p>
+        </section>
+
+        <section className="mt-8 rounded-3xl border border-slate-200 bg-white p-6 shadow-line sm:p-8">
+          <h2 className="text-2xl font-black text-ink">Privacidad y calculos locales</h2>
+          <p className="mt-4 leading-8 text-slate-700">
+            Los datos que introduces se calculan en el navegador. No necesitas cuenta ni introducir
+            tu nombre. Si una herramienta permite guardar un resultado localmente, ese archivo queda
+            en tu dispositivo salvo que decidas compartirlo.
           </p>
         </section>
       </div>

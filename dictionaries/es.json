@@ -82,7 +82,7 @@
     }
   },
   "validation": {
-    "age": "Introduce una edad entre 2 y 120.",
+    "age": "Introduce una edad adulta entre 20 y 120.",
     "heightCm": "Introduce una altura entre 60 cm y 250 cm.",
     "weightKg": "Introduce un peso entre 10 kg y 300 kg.",
     "feet": "Introduce pies entre 1 y 8.",

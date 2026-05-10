@@ -97,6 +97,35 @@ export default function HealthCalculatorsPage() {
         </div>
 
         <section className="mt-12 rounded-3xl border border-slate-200 bg-white p-6 shadow-line sm:p-8">
+          <h2 className="text-2xl font-black text-ink">Which calculator should I use?</h2>
+          <p className="mt-4 leading-8 text-slate-700">
+            Start with the BMI Calculator if you want a quick adult screening category. Use BMR when
+            you want to estimate resting energy needs, then the Calorie Calculator when you want a
+            daily calorie target based on activity and goal. Ideal Weight and Body Fat calculators
+            add extra context, but none of these tools should be used as a medical diagnosis.
+          </p>
+          <div className="mt-5 overflow-x-auto">
+            <table className="w-full min-w-[720px] border-collapse text-left text-sm">
+              <caption className="sr-only">Comparison of BMI Checks calculators</caption>
+              <thead className="border-b border-slate-200 text-ink">
+                <tr>
+                  <th className="py-3 pr-4 font-black">Tool</th>
+                  <th className="py-3 pr-4 font-black">Best for</th>
+                  <th className="py-3 font-black">Use responsibly</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100 text-slate-700">
+                <tr><td className="py-3 pr-4 font-semibold">BMI</td><td className="py-3 pr-4">Adult weight category screening</td><td className="py-3">Does not measure body fat directly.</td></tr>
+                <tr><td className="py-3 pr-4 font-semibold">BMR</td><td className="py-3 pr-4">Resting calorie needs and TDEE</td><td className="py-3">Activity multipliers are estimates.</td></tr>
+                <tr><td className="py-3 pr-4 font-semibold">Calorie</td><td className="py-3 pr-4">Maintenance, loss or gain targets</td><td className="py-3">Avoid extreme deficits without professional advice.</td></tr>
+                <tr><td className="py-3 pr-4 font-semibold">Ideal Weight</td><td className="py-3 pr-4">Formula-based reference weights</td><td className="py-3">Not a required target weight.</td></tr>
+                <tr><td className="py-3 pr-4 font-semibold">Body Fat</td><td className="py-3 pr-4">Circumference-based body composition estimate</td><td className="py-3">Measurement technique affects the result.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section className="mt-12 rounded-3xl border border-slate-200 bg-white p-6 shadow-line sm:p-8">
           <h2 className="text-2xl font-black text-ink">About these tools</h2>
           <p className="mt-4 leading-8 text-slate-700">
             All calculators on BMI Checks use standard, widely published formulas from peer-reviewed
@@ -114,6 +143,15 @@ export default function HealthCalculatorsPage() {
             <a href="/about" className="underline-offset-4 hover:underline">About BMI Checks</a>
             <a href="/contact" className="underline-offset-4 hover:underline">Contact</a>
           </div>
+        </section>
+
+        <section className="mt-8 rounded-3xl border border-slate-200 bg-white p-6 shadow-line sm:p-8">
+          <h2 className="text-2xl font-black text-ink">Privacy and local calculations</h2>
+          <p className="mt-4 leading-8 text-slate-700">
+            Calculator inputs are processed in your browser. BMI Checks does not require an account
+            and does not ask for your name. If a tool offers local saving, that file or browser data
+            stays on your own device unless you choose to share it.
+          </p>
         </section>
 
         <section className="mt-8 rounded-3xl border border-coral/30 bg-coral/10 p-6 sm:p-8">
