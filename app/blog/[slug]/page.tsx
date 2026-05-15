@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getArticle, getArticles } from "@/lib/blog";
+import { siteConfig } from "@/lib/seo";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -35,8 +36,49 @@ export default async function ArticlePage({ params }: Props) {
     year: "numeric",
   });
 
+  const articleUrl = `${siteConfig.url}/blog/${slug}`;
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": `${articleUrl}#article`,
+    headline: article.title,
+    description: article.description,
+    url: articleUrl,
+    mainEntityOfPage: { "@type": "WebPage", "@id": articleUrl },
+    datePublished: article.publishDate,
+    dateModified: article.publishDate,
+    inLanguage: "en",
+    keywords: article.tags.join(", "),
+    author: {
+      "@type": "Person",
+      name: "Ricardo Diaz",
+      url: `${siteConfig.url}/about`,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      url: siteConfig.url,
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteConfig.url}/logo.png`,
+      },
+    },
+    image: `${siteConfig.url}/logo.png`,
+  };
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${siteConfig.url}/` },
+      { "@type": "ListItem", position: 2, name: "Blog", item: `${siteConfig.url}/blog` },
+      { "@type": "ListItem", position: 3, name: article.title, item: articleUrl },
+    ],
+  };
+  const jsonLdHtml = JSON.stringify([articleJsonLd, breadcrumbJsonLd]).replace(/</g, "\\u003c");
+
   return (
     <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdHtml }} />
       <section className="bg-gradient-to-br from-teal-50 via-white to-slate-50 px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
         <div className="mx-auto max-w-3xl">
           <div className="flex flex-wrap gap-2">
