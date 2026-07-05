@@ -1,12 +1,18 @@
 import Link from "next/link";
 import { createLocalizedMetadata } from "@/lib/metadata";
+import { StructuredData } from "@/components/StructuredData";
+
+const PAGE_PATH = "/bmi-chart";
+const PAGE_TITLE = "BMI Chart for Adults - Height and Weight Ranges";
+const PAGE_DESCRIPTION =
+  "Use this adult BMI chart to read healthy weight, overweight, and obesity ranges by height, with metric and US examples, limitations, and FAQs.";
 
 export const metadata = createLocalizedMetadata({
   locale: "en",
-  path: "/bmi-chart",
-  title: "BMI Chart for Adults - Height and Weight Ranges",
-  description:
-    "Use this adult BMI chart to read healthy weight, overweight, and obesity ranges by height, with metric and US examples, limitations, and FAQs.",
+  path: PAGE_PATH,
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
+  type: "article",
 });
 
 const usRows = [
@@ -45,8 +51,11 @@ const references = [
 ];
 
 export default function BMIChartPage() {
+  const faqSchema = faq.map(([question, answer]) => ({ question, answer }));
+
   return (
     <main className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
+      <StructuredData path={PAGE_PATH} title={PAGE_TITLE} description={PAGE_DESCRIPTION} faq={faqSchema} />
       <article className="space-y-8">
         <section className="rounded-3xl border border-slate-200 bg-white p-6 shadow-line sm:p-8">
           <p className="text-sm font-bold uppercase tracking-[0.12em] text-teal-700">Adult BMI reference</p>

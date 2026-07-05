@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
 import { BodyFatCalculator } from "./BodyFatCalculator";
+import { StructuredData } from "@/components/StructuredData";
+
+const PAGE_PATH = "/body-fat-calculator";
+const PAGE_TITLE = "Body Fat Calculator – Estimate Body Fat Percentage";
+const PAGE_DESCRIPTION =
+  "Estimate your body fat percentage using the US Navy method. Enter waist, neck, and height measurements for a quick body fat estimate.";
 
 export const metadata: Metadata = {
-  title: "Body Fat Calculator – Estimate Body Fat Percentage",
-  description: "Estimate your body fat percentage using the US Navy method. Enter waist, neck, and height measurements for a quick body fat estimate.",
-  alternates: { canonical: "/body-fat-calculator" }
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
+  alternates: { canonical: PAGE_PATH }
 };
 
 const faq = [
@@ -42,8 +48,11 @@ const references = [
 ];
 
 export default function BodyFatPage() {
+  const faqSchema = faq.map((item) => ({ question: item.q, answer: item.a }));
+
   return (
     <main>
+      <StructuredData path={PAGE_PATH} title={PAGE_TITLE} description={PAGE_DESCRIPTION} faq={faqSchema} includeWebApp />
       <section className="bg-gradient-to-br from-rose-50 via-white to-teal-50 px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
         <div className="mx-auto max-w-3xl">
           <p className="inline-flex rounded-full border border-rose-200 bg-white/80 px-4 py-1.5 text-xs font-black uppercase tracking-[0.16em] text-rose-700">

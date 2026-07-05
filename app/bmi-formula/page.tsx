@@ -1,12 +1,18 @@
 import Link from "next/link";
 import { createLocalizedMetadata } from "@/lib/metadata";
+import { StructuredData } from "@/components/StructuredData";
+
+const PAGE_PATH = "/bmi-formula";
+const PAGE_TITLE = "BMI Formula: Metric & US Calculation With Examples (2026)";
+const PAGE_DESCRIPTION =
+  "The BMI formula in metric and US units: weight ÷ height². See step-by-step examples, the 703 factor, common mistakes, and how to read the result.";
 
 export const metadata = createLocalizedMetadata({
   locale: "en",
-  path: "/bmi-formula",
-  title: "BMI Formula - Metric and US Body Mass Index Calculation",
-  description:
-    "Learn the BMI formula in metric and US units with step-by-step examples, conversion notes, common mistakes, limitations, and references.",
+  path: PAGE_PATH,
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
+  type: "article",
 });
 
 const examples = [
@@ -32,17 +38,34 @@ const references = [
 ];
 
 export default function BMIFormulaPage() {
+  const faqSchema = faq.map(([question, answer]) => ({ question, answer }));
+
   return (
     <main className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
+      <StructuredData
+        path={PAGE_PATH}
+        title={PAGE_TITLE}
+        description={PAGE_DESCRIPTION}
+        faq={faqSchema}
+      />
       <article className="space-y-8">
         <section className="rounded-3xl border border-slate-200 bg-white p-6 shadow-line sm:p-8">
           <p className="text-sm font-bold uppercase tracking-[0.12em] text-teal-700">BMI calculation</p>
-          <h1 className="mt-2 text-4xl font-black leading-tight text-ink">BMI Formula</h1>
+          <h1 className="mt-2 text-4xl font-black leading-tight text-ink">The BMI Formula (Metric &amp; US), 2026</h1>
           <p className="mt-4 leading-8 text-slate-700">
             BMI, or Body Mass Index, compares weight with height. It is commonly used as an adult
             screening calculation because it is fast, repeatable, and easy to explain. The result is
             still only a broad reference and does not measure body fat directly.
           </p>
+          <div className="mt-5 rounded-2xl border border-teal-200 bg-teal-50/70 p-5">
+            <p className="text-sm font-black uppercase tracking-[0.12em] text-teal-700">Quick answer</p>
+            <p className="mt-2 leading-8 text-slate-800">
+              <strong>The BMI formula is weight divided by height squared.</strong> In metric units,
+              BMI = weight (kg) ÷ height (m)²; in US units, BMI = 703 × weight (lb) ÷ height (in)².
+              Both give the same score — the 703 factor just converts pounds and inches to the metric
+              scale.
+            </p>
+          </div>
         </section>
 
         <section className="grid gap-5 md:grid-cols-2">

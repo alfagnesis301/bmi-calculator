@@ -1,12 +1,17 @@
 import Link from "next/link";
 import { createLocalizedMetadata } from "@/lib/metadata";
+import { StructuredData } from "@/components/StructuredData";
+
+const PAGE_PATH = "/health-calculators";
+const PAGE_TITLE = "Free Health Calculators - BMI, BMR, Calories and Body Fat";
+const PAGE_DESCRIPTION =
+  "Use free browser-based health calculators for BMI, BMR, daily calories, ideal weight, and body fat, with privacy notes and responsible-use guidance.";
 
 export const metadata = createLocalizedMetadata({
   locale: "en",
-  path: "/health-calculators",
-  title: "Free Health Calculators - BMI, BMR, Calories and Body Fat",
-  description:
-    "Use free browser-based health calculators for BMI, BMR, daily calories, ideal weight, and body fat, with privacy notes and responsible-use guidance.",
+  path: PAGE_PATH,
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
 });
 
 const tools = [
@@ -71,8 +76,11 @@ const faq = [
 ];
 
 export default function HealthCalculatorsPage() {
+  const faqSchema = faq.map(([question, answer]) => ({ question, answer }));
+
   return (
     <main>
+      <StructuredData path={PAGE_PATH} title={PAGE_TITLE} description={PAGE_DESCRIPTION} faq={faqSchema} />
       <section className="bg-gradient-to-br from-teal-50 via-white to-slate-50 px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
           <p className="inline-flex rounded-full border border-teal-200 bg-white/80 px-4 py-1.5 text-xs font-black uppercase tracking-[0.16em] text-teal-700">
