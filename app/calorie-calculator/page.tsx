@@ -1,11 +1,19 @@
-import type { Metadata } from "next";
 import { CalorieCalculator } from "./CalorieCalculator";
+import { createLocalizedMetadata } from "@/lib/metadata";
+import { StructuredData } from "@/components/StructuredData";
 
-export const metadata: Metadata = {
-  title: "Calorie Calculator – Daily Calorie Needs",
-  description: "Calculate your daily calorie needs for weight maintenance, loss, or gain based on age, gender, height, weight, and activity level.",
-  alternates: { canonical: "/calorie-calculator" }
-};
+const PAGE_PATH = "/calorie-calculator";
+const PAGE_TITLE = "Calorie Calculator: Daily Calorie Needs (TDEE, 2026)";
+const PAGE_DESCRIPTION =
+  "Free calorie calculator: find your daily calorie needs (TDEE) to maintain, lose, or gain weight, based on age, sex, height, weight, and activity level.";
+
+export const metadata = createLocalizedMetadata({
+  locale: "en",
+  path: PAGE_PATH,
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
+  type: "article",
+});
 
 const faq = [
   {
@@ -42,20 +50,39 @@ const references = [
 ];
 
 export default function CaloriePage() {
+  const faqSchema = faq.map((item) => ({ question: item.q, answer: item.a }));
+
   return (
     <main>
+      <StructuredData
+        path={PAGE_PATH}
+        title={PAGE_TITLE}
+        description={PAGE_DESCRIPTION}
+        faq={faqSchema}
+        includeWebApp
+      />
       <section className="bg-gradient-to-br from-amber-50 via-white to-teal-50 px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
         <div className="mx-auto max-w-3xl">
           <p className="inline-flex rounded-full border border-amber-200 bg-white/80 px-4 py-1.5 text-xs font-black uppercase tracking-[0.16em] text-amber-700">
             Free health tool
           </p>
           <h1 className="mt-4 text-4xl font-black leading-tight text-ink sm:text-5xl">
-            Calorie Calculator
+            Calorie Calculator: How Many Calories Do You Need Per Day? (2026)
           </h1>
           <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-700">
             Estimate your daily calorie needs for weight maintenance, loss, or gain based on your
             personal measurements and activity level.
           </p>
+          <div className="mt-5 rounded-2xl border border-teal-200 bg-white/80 p-5">
+            <p className="text-sm font-black uppercase tracking-[0.12em] text-teal-700">Quick answer</p>
+            <p className="mt-2 leading-8 text-slate-800">
+              <strong>Most adults need roughly 1,600–2,400 calories a day to maintain weight</strong>,
+              but your exact number depends on age, sex, height, weight, and activity. This tool uses
+              the Mifflin-St Jeor equation for your BMR, multiplies it by an activity factor to get
+              your daily needs (TDEE), then adjusts by about 500 calories to lose or gain around
+              0.45 kg (1 lb) per week.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -90,6 +117,84 @@ export default function CaloriePage() {
           <p className="mt-4 leading-8 text-slate-700">
             To lose approximately 0.5 kg per week, a deficit of ~500 kcal/day is commonly used:
             1,898 − 500 = <strong>1,398 kcal/day</strong> target.
+          </p>
+        </section>
+
+        <section className="rounded-3xl border border-slate-200 bg-white p-6 shadow-line sm:p-8">
+          <h2 className="text-2xl font-black text-ink">Activity multipliers</h2>
+          <p className="mt-4 leading-8 text-slate-700">
+            Your BMR is multiplied by an activity factor to estimate your TDEE — the calories you burn
+            in a full day. Most people overestimate their activity, so choose conservatively.
+          </p>
+          <div className="mt-5 overflow-x-auto">
+            <table className="w-full min-w-[560px] border-collapse text-left text-sm">
+              <caption className="sr-only">Activity level multipliers for TDEE</caption>
+              <thead className="border-b border-slate-200 text-ink">
+                <tr>
+                  <th className="py-3 pr-4 font-black">Activity level</th>
+                  <th className="py-3 pr-4 font-black">Description</th>
+                  <th className="py-3 font-black">Multiplier</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100 text-slate-700">
+                {[
+                  ["Sedentary", "Little or no exercise", "1.2"],
+                  ["Lightly active", "Light exercise 1–3 days/week", "1.375"],
+                  ["Moderately active", "Moderate exercise 3–5 days/week", "1.55"],
+                  ["Very active", "Hard exercise 6–7 days/week", "1.725"],
+                  ["Extra active", "Physical job or twice-daily training", "1.9"]
+                ].map(([level, desc, mult]) => (
+                  <tr key={level}>
+                    <td className="py-3 pr-4 font-semibold">{level}</td>
+                    <td className="py-3 pr-4">{desc}</td>
+                    <td className="py-3">{mult}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section className="rounded-3xl border border-slate-200 bg-white p-6 shadow-line sm:p-8">
+          <h2 className="text-2xl font-black text-ink">Calories to lose or gain weight</h2>
+          <p className="mt-4 leading-8 text-slate-700">
+            A pound of body fat is roughly 3,500 calories, so a daily change of about 500 calories
+            shifts weight by around 0.45 kg (1 lb) per week. Adjust from your maintenance TDEE:
+          </p>
+          <div className="mt-5 overflow-x-auto">
+            <table className="w-full min-w-[520px] border-collapse text-left text-sm">
+              <caption className="sr-only">Daily calorie adjustment by goal</caption>
+              <thead className="border-b border-slate-200 text-ink">
+                <tr>
+                  <th className="py-3 pr-4 font-black">Goal</th>
+                  <th className="py-3 pr-4 font-black">Daily adjustment</th>
+                  <th className="py-3 font-black">Weekly change</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100 text-slate-700">
+                {[
+                  ["Slow loss", "−250 cal", "~0.25 kg (0.5 lb)"],
+                  ["Standard loss", "−500 cal", "~0.45 kg (1 lb)"],
+                  ["Slow gain", "+250 cal", "~0.25 kg"],
+                  ["Standard gain", "+500 cal", "~0.45 kg"]
+                ].map(([goal, adj, change]) => (
+                  <tr key={goal}>
+                    <td className="py-3 pr-4 font-semibold">{goal}</td>
+                    <td className="py-3 pr-4">{adj}</td>
+                    <td className="py-3">{change}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-4 leading-8 text-slate-700">
+            Avoid dropping below about 1,200 cal/day (women) or 1,500 cal/day (men) without medical
+            supervision, and recalculate every 4–6 kg of weight change since TDEE falls as you lose
+            weight. Your weight target depends on the{" "}
+            <a href="/healthy-bmi-range" className="font-semibold text-teal-700 underline-offset-4 hover:underline">
+              healthy BMI range of 18.5 to 24.9
+            </a>
+            .
           </p>
         </section>
 

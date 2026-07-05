@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
 import { BMRCalculator } from "./BMRCalculator";
+import { StructuredData } from "@/components/StructuredData";
+
+const PAGE_PATH = "/bmr-calculator";
+const PAGE_TITLE = "BMR Calculator – Basal Metabolic Rate Calculator";
+const PAGE_DESCRIPTION =
+  "Calculate your Basal Metabolic Rate (BMR) and daily calorie needs using the Mifflin-St Jeor equation. Free online BMR calculator.";
 
 export const metadata: Metadata = {
-  title: "BMR Calculator – Basal Metabolic Rate Calculator",
-  description: "Calculate your Basal Metabolic Rate (BMR) and daily calorie needs using the Mifflin-St Jeor equation. Free online BMR calculator.",
-  alternates: { canonical: "/bmr-calculator" }
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
+  alternates: { canonical: PAGE_PATH }
 };
 
 const faq = [
@@ -42,8 +48,11 @@ const references = [
 ];
 
 export default function BMRPage() {
+  const faqSchema = faq.map((item) => ({ question: item.q, answer: item.a }));
+
   return (
     <main>
+      <StructuredData path={PAGE_PATH} title={PAGE_TITLE} description={PAGE_DESCRIPTION} faq={faqSchema} includeWebApp />
       <section className="bg-gradient-to-br from-violet-50 via-white to-teal-50 px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
         <div className="mx-auto max-w-3xl">
           <p className="inline-flex rounded-full border border-violet-200 bg-white/80 px-4 py-1.5 text-xs font-black uppercase tracking-[0.16em] text-violet-700">

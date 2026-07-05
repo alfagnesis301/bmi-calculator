@@ -1,15 +1,39 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ResponsiveAdSlot } from "@/components/AdPlaceholder";
+import { StructuredData } from "@/components/StructuredData";
+
+const PAGE_PATH = "/how-to-find-your-bmi-score";
+const PAGE_TITLE = "How to Find Your BMI Score - Simple BMI Formula and Calculator";
+const PAGE_DESCRIPTION =
+  "Learn how to find your BMI score using height and weight, see the metric and US BMI formulas, and calculate your BMI online.";
 
 export const metadata: Metadata = {
-  title: "How to Find Your BMI Score - Simple BMI Formula and Calculator",
-  description:
-    "Learn how to find your BMI score using height and weight, see the metric and US BMI formulas, and calculate your BMI online.",
+  title: PAGE_TITLE,
+  description: PAGE_DESCRIPTION,
   alternates: {
-    canonical: "/how-to-find-your-bmi-score"
+    canonical: PAGE_PATH
   }
 };
+
+// Mirrors the on-page Q&A content so FAQ rich results match what is visible.
+const faqSchema = [
+  {
+    question: "How do I find my BMI score?",
+    answer:
+      "Enter your height and weight into a BMI calculator, or apply the formula yourself. Metric BMI is weight in kilograms divided by height in metres squared; US BMI is 703 times weight in pounds divided by height in inches squared.",
+  },
+  {
+    question: "What is the BMI formula?",
+    answer:
+      "Metric: BMI = weight (kg) / height (m)². US: BMI = 703 × weight (lb) / height (in)². Both give the same score; the 703 factor converts pounds and inches to the metric scale.",
+  },
+  {
+    question: "What does my BMI score mean?",
+    answer:
+      "For most adults, below 18.5 is underweight, 18.5 to 24.9 is the healthy range, 25 to 29.9 is overweight, and 30 or above is obesity. BMI is a screening number, not a diagnosis.",
+  },
+];
 
 const steps = [
   {
@@ -33,6 +57,7 @@ const steps = [
 export default function HowToFindBMIScorePage() {
   return (
     <main>
+      <StructuredData path={PAGE_PATH} title={PAGE_TITLE} description={PAGE_DESCRIPTION} faq={faqSchema} />
       <section className="bg-[linear-gradient(135deg,#f8fffd_0%,#f4f8f8_55%,#fff7f1_100%)]">
         <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
           <p className="inline-flex rounded-full border border-teal-200 bg-white px-4 py-2 text-xs font-black uppercase tracking-[0.16em] text-teal-700 shadow-line">
